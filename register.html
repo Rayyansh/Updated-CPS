@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                     <div class="col-lg-10">
+                        <h3 class="text-white text-center">Vishwa's CPS Stages, Framework and Te(a)chniques<sup>&reg;</sup> </h3>
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page 1</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header -->
+    <!-- section -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="row">
+                    <img src="{{url_for('static',filename='images/login-image-2.jpg')}}" alt="" class="w-100">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="login-box">
+                    <h1 class="color1 font3">LOGIN</h1>
+                    <form action="/signin" method="POST">
+                        <div class="error-text">Confirm Password Not Match</div>
+                        <div class="form-group">
+                            <input type="email" value="{{data[0]}}"  class="form-control" id="email" placeholder="Enter email" name="uname">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" value="{{data[1]}}"  class="form-control" id="pwd" placeholder="Enter password" name="passwd">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" value="{{data[1]}}"  class="form-control" id="pwd" placeholder="Confirm password" name="passwd">
+                            <div class="Show">Show</div>
+                        </div>  
+                        <button type="submit" class="btn btn-primary btn-md btn-block mb-10">Login</button>
+                        <p><a href="" class="float-left">Forget Password  </a> <a href="" class="float-right">Sign Up</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-logo">
+        <img src="{{url_for('static',filename='images/logo1.jpg')}}" alt="">
+    </div>
+    <div class="fixed-logo-top">
+        <img src="{{url_for('static',filename='images/logo.jpg')}}" alt="">
+    </div>
+    <div class="fixed-help-logo">
+        <a href="" data-toggle="modal" data-target="#exampleModal">
+            <img src="{{url_for('static',filename='images/help-icon-2.png')}}" alt="">
+        </a>
+    </div>
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    <p> Vishwa’s CPS Stages, Framework and Te(a)chniques (CPS©) is a set of framework, tools and techniques using a multi-dimensional approach arranged into various stages to address business as well as leadership/ individual challenges. 
+<br><br>
+There are six interconnected stages in the CPS framework. This tool facilitates the first two stages of the framework, which are designed to help you identify, explore and articulate your specific issue. 
+<br><br>
+The tool uses the word “problem” as a neutral term. Words like problem, issue, situation, goal, objective, opportunity could also be used, since each issue under consideration is unique. 
+</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup end -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

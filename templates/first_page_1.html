@@ -1,0 +1,56 @@
+<html>
+    <head  >
+        <style>
+            .previous{
+            height: 30px;
+            width: 65px; background-color:lightskyblue;border: 0px;
+            }
+            .previous:hover{
+                background-color:cyan;
+                cursor: pointer;
+            }
+            .next{
+                height: 30px;width: 60px; background-color:lightskyblue;border: 0px;
+            }
+            .next:hover{
+                background-color:cyan;
+                cursor: pointer;
+            }
+        </style>
+        
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div  style="background-color:cornflowerblue;height: 80px;width: 100%;">
+        <center >
+        <h1 style="float:left;position:relative; top:0px;left: 450px ;">CPS: Creative Problem Solving©</h1>
+         <img style="float: right;height: 80px;width: 150px;" src="{{ url_for('static', filename='1550765319670.png') }}" alt="Nivritti">
+        </center>
+       <!-- <p style="visibility: hidden;">{{data}}</p>-->
+    </div>
+    
+    </head>
+    <body>
+        
+        <br><br>
+        <form action="">
+           
+      <h3 style="padding-left: 500px;float: left;"> <u> PROBLEM ID:</u> auto-gen ID#        </h3>&nbsp; <h3 style="padding-left: 80px;float: left;"> <u> PROBLEM NAME:</u> <input type="text" name="prob_name" style="width:210px;height:25px;" value="{{data[6]}}" placeholder="Enter Problem Name" id="">
+    </h3>    
+    
+    <br>
+    <br><br><br>
+ 
+    <h3 style="position: absolute;left: 510px;"> <u> Initial Description of the Problem </u>   </h3>
+<br><br><br>
+    <pre style="position: absolute;left: 510px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Examples:.</pre>
+    
+    <br><br><br>
+    <textarea class="textarea" maxlength = "75"  placeholder="Enter Description of the Problem" style="padding-left:10px; position: absolute;border-radius:10px;border-color:black ;left: 510px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" name="problem_desc" id="" cols="80" rows="20">{{data[2]}}</textarea>
+    <br><br><br>
+    
+    <div style="position: absolute;left: 810px;top: 650px;">
+    <button class="but"  type="submit" formaction="">Save</button >&nbsp; &nbsp; &nbsp; <button  class="previous" type="submit" formaction="/" formmethod="GET"><< Back</button ><button class='next'  type="submit" formaction="/second" formmethod="POST" >Next >></button>
+</div>
+</form>
+</body>
+</html>

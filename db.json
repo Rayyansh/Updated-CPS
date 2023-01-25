@@ -1,0 +1,98 @@
+{
+    "_id":"y928348569346859345",
+    "user" : {
+        "name":"harshil@gmail.com",
+        "password":"JDJiJDEyJEg5SFlUekRlN2prbXhZOVJ6ZmEvR09JeWpram5QQkZoaFg0bUlEZUJYN2JpQVFtQUF2MHJT",
+        "problems":[
+
+                    {
+                        "problem_id":"",
+                        "problem_name":"",
+                        "initial_desc":"",
+                        "initial_prob_st":"",
+                        "how_prob_look":{
+                            "ques":"How does the problem look? What is visible when the issue exists? Describe what you see when the problem occurs.",
+                            "ans":"",
+                            "hint":"How does the problem look? What is visible when the issue occurs? Describe what you see when the problem exists. As you are sitting in your chair, visualize (with your eyes open or eyes closed) as though the problem is happening now. Examples:"
+                        },
+                        "how_prob_sound":{
+                            "ques":"How does the problem sound? What is audible when the issue exists? Describe what you hear when the problem occurs.",
+                            "ans":"",
+                            "hint":"How does the problem sound? What is audible when the issue occurs? Describe what you hear when the problem exists. As you are sitting in your chair, listen as though the problem is happening now. Examples:"
+                        },
+                        "how_prob_feel":{
+                            "ques":"How does the problem feel? What is felt when the issue exists? Describe what it feels like when the problem occurs.",
+                            "ans":"",
+                            "hint":"How does the problem feel? What is felt when the issue occurs? Describe what it feels like when the problem exists. As you are sitting in your chair, feel as though the problem is happening now. Examples:"
+                        },
+                        "how_prob_smell":{
+                            "ques":"How does the problem smell? Describe what it smells like when the problem occurs.",
+                            "ans":"",
+                            "hint":"How does the problem smell? What is smelt when the issue occurs? Describe what it smells like when the problem exists. As you are sitting in your chair, open up your sensory channels and describe the smells you may experience if the problem is happening now. Examples:"
+                        },
+                        "how_prob_taste":{
+                            "ques":"How does the problem taste? Describe what it tastes like when the problem occurs.",
+                            "ans":"",
+                            "hint":"How does the problem taste? What is smelt when the issue occurs? Describe what it tastes like when the problem exists. As you are sitting in your chair, open up your sensory channels and describe the tastes you may experience if the problem is happening now. Examples:"
+                        },
+                        "purpose":{
+                            "ques":"What is the purpose for addressing this problem?",
+                            "ans":"",
+                            "hint":"holistic help1 - To be added"
+                        },
+                        "for_whom":{
+                            "ques":"For whom is this a problem? Identify the specific individual, role or group.",
+                            "ans":"",
+                            "hint":"holistic help2 - To be added"
+                        },
+                        "is_prob_real":{
+                            "ques":"Do you believe the challenge exists? Who else (e.g., team, boss, client) believes the challenge exists? ",
+                            "ans":"",
+                            "hint":"Belief is about whether someone believes that something is possible, whether something is necessary or unnecessary.Do you believe that the problem / issue / opportunity exists? Does anyone else (e.g., team, boss, client) believe the problem / issue / opportunity exists? Does someone believe this problem / issue / opportunity could exist? Examples:"
+                        },
+                        "is_prob_value_sys":{
+                            "ques":"Is this problem coming from your value system?",
+                            "ans":"",
+                            "hint":"holostic help4 - To be added"
+                        },
+                        "is_prob_skill_gap":{
+                            "ques":"Is this problem coming because of a skills gap?",
+                            "ans":"",
+                            "hint":"Skills refers to the possibilities, competencies, qualities, and strategies that people can apply to engage in or initiate any activity or change. These could be technical competencies in your field and could also refer to “soft skills” such as the ability to adapt to the new, changing situation. Is the problem originating from a skills gap?  If yes, which skills? Examples:"
+                        },
+                        "behavior_prob":{
+                            "ques":"Is the problem stemming out of a behavior issue?",
+                            "ans":"",
+                            "hint":"Behavior is about what people do and say. If an onlooker were to observe another person, the behaviors are what the onlooker would see, feel, or hear when the observed person is carrying out an activity. Behavior refers to action and reaction of a person in a particular environment. A person describes what he thought, did and what effect this action had in a certain situation. Is the problem originating from a behavior issue?  If yes, which behaviors?"
+                        },
+                        "is_prob_envt_culture":{
+                            "ques":"Is the problem stemming from environment and cultural factors?",
+                            "ans":"",
+                            "hint":"Environment refers to the external circumstances, factors & conditions that can influence the problem. Each problem takes place in a given time and geographical location. Cultural factors reflect what is important within the context of the organization (yours and / or the client). Is the problem originating from environmental and / or cultural factors? If yes, which factors? Examples: organisation culture, system, boss, management, industry, government, downturn, recession, natural calamities, family support, team support, friends, regulatory or legal constraints"
+                        },
+                        "how_to_stmts":[
+                         ],
+                        "how_to_st":"",
+                        "what_would":{
+                            "ques":"",
+                            "ans":""
+                        },
+                        "selected_how_to":{
+                            "question":"",
+                            "ambiguity":[
+                                {
+                                    "vague":"",
+                                    "ques":"",
+                                    "ans":""
+                                }
+                            ]
+                        },
+                        "before_ambi":"",
+                        "final_question":""
+                    }
+
+        ]
+        
+    }
+
+ }

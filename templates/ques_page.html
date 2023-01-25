@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row bg-1 header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {# new changes here           #}
+        <div class="col-lg-2" style="margin-top: 26px;">
+            <div class="fixed-logo">
+                <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{url_for('signin')}}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sensory Awareness / Problem</li>
+                </ol>
+            </nav>
+        </div>
+        <div  class="col-lg-1" style="margin-top: 33px;">
+            <a href="" data-toggle="modal" data-target="#exampleModal">
+                <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+            </a>
+        </div>
+        {# new changes here           #}
+
+    </div>
+</div>
+<!-- header -->
+<!-- section -->
+<section>
+    <div class="container">
+        <form id="frm" method="post"  enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="highlight-text text-white mb-20  ">{{session['user']['problems'][session['id']][ session['questions'][session['current_ques_id']] ]['ques']}}</h4>
+                </div>
+
+            </div>
+            <!--	 <input type="text" name="num" id="" value="{{num}}" style="display: none;">
+        <input type="text" name="page" id="" value="{{page}}" style="display: none;">
+        <input type="text" name="no" id="" value="{{no}}" style="display: none;">-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <!-- <textarea class="form-control" rows="10" id="comment" maxlength = "100" placeholder="Enter answer here (limit 100 characters)" name="answer">{{session['user']['problems'][session['id']][session['questions'][session['current_ques_id']]]['ans']}}</textarea> -->
+                        <!-- <textarea class="form-control" rows="10" id="comment" maxlength = "100" placeholder="Enter answer here (limit 100 characters)" name="answer"></textarea> -->
+                        {{ session['type'] | safe }}
+                    </div>
+                </div>
+                <input type="text" value="0" name="" id="save_check" disabled style="display: none;">
+                <div class="col-lg-12 text-center">
+                    <button type="button"  onclick="on_submit_b()" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+                    <button type="button"  onclick="on_submit_s()"  class="btn btn-md btn-primary">SAVE</button>
+                    <button type="button"   onclick="on_submit_f()" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                    {#  new change here                      #}
+                    <button style="position:absolute;bottom: 4%;left:4%;"formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<!-- popup -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p>{{ session['hint'] | safe}} </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- popup end -->
+
+<!-- Scripts -->
+<script>
+    function db(){
+        if(document.getElementById('y').checked){
+
+            document.getElementById('dv').style.display = "block";
+        }
+        else{
+
+            document.getElementById('dv').style.display = "none";
+        }
+    }
+    function on_submit_b(){
+        //alert("done");
+        if({{save}} == 0){
+            let ys = confirm("Do you want to save your changes before moving away from this page?");
+            if(ys){
+                document.getElementById('frm').action = "/list_problems_db_bs";
+                document.getElementById('frm').method = "POST";
+
+                if(document.getElementById('y')!=null){
+                    if(document.getElementById('y').checked){
+
+                        if(notcheck()){
+                            alert("If Yes, Select Any checkboxes");
+                            //location.href = "/list_problems_db_b";
+                        }else{
+
+                            document.getElementById('frm').submit();
+                        }
+                    }else{
+
+                        document.getElementById('frm').submit();
+                    }
+                }
+                else document.getElementById('frm').submit();
+            }
+            else{
+                document.getElementById('frm').action = "/list_problems_db_b";
+                if(document.getElementById('y')!=null){
+                    if(document.getElementById('y').checked){
+
+                        if(notcheck()){
+                            alert("If Yes, Select Any checkboxes");
+
+                        }else{
+                            document.getElementById('frm').submit();
+                        }
+                    }else{
+                        document.getElementById('frm').submit();
+                    }}
+                else document.getElementById('frm').submit();
+            }
+        }
+    else
+        {
+            document.getElementById('frm').action = "/list_problems_db_b";
+            if(document.getElementById('y')!=null){
+                if(document.getElementById('y').checked){
+
+                    if(notcheck()){
+                        alert("If Yes, Select Any checkboxes");
+
+                    }else{
+                        document.getElementById('frm').submit();
+                    }
+                }else{
+                    document.getElementById('frm').submit();
+                }}
+            else document.getElementById('frm').submit();
+        }
+
+    }
+    function on_submit_f(){
+        //alert("done");
+        if({{save}} == 0){
+            let ys = confirm("Do you want to save your changes before moving away from this page?");
+            if(ys){
+                document.getElementById('frm').action = "/list_problems_db_ns";
+                document.getElementById('frm').method = "POST";
+
+                if(document.getElementById('y')!=null){
+                    if(document.getElementById('y').checked){
+
+                        if(notcheck()){
+                            alert("If Yes, Select Any checkboxes");
+                            //location.href = "/list_problems_db_b";
+                        }else{
+
+                            document.getElementById('frm').submit();
+                        }
+                    }else{
+
+                        document.getElementById('frm').submit();
+                    }
+                }
+                else document.getElementById('frm').submit();
+            }
+            else{
+                document.getElementById('frm').action = "/list_problems_db_f";
+                if(document.getElementById('y')!=null){
+                    if(document.getElementById('y').checked){
+
+                        if(notcheck()){
+                            alert("If Yes, Select Any checkboxes");
+
+                        }else{
+                            document.getElementById('frm').submit();
+                        }
+                    }else{
+                        document.getElementById('frm').submit();
+                    }}
+                else document.getElementById('frm').submit();
+            }
+        }
+    else
+        {
+            document.getElementById('frm').action = "/list_problems_db_f";
+            if(document.getElementById('y')!=null){
+                if(document.getElementById('y').checked){
+
+                    if(notcheck()){
+                        alert("If Yes, Select Any checkboxes");
+
+                    }else{
+                        document.getElementById('frm').submit();
+                    }
+                }else{
+                    document.getElementById('frm').submit();
+                }}
+            else document.getElementById('frm').submit();
+        }
+    }
+    function notcheck(){
+        var chks = document.getElementsByClassName('check');
+        for(var i=0;i<chks.length;i++){
+            if(chks[i].checked) return false;
+        }
+        return true;
+    }
+    function on_submit_s(){
+
+        document.getElementById('frm').action = "/list_problems_db";
+        document.getElementById('frm').method = "POST";
+
+        if(document.getElementById('y')!=null){
+            if(document.getElementById('y').checked){
+
+                if(notcheck()){
+                    alert("If Yes, Select Any checkboxes");
+                    //location.href = "/list_problems_db_b";
+                }else{
+
+                    document.getElementById('frm').submit();
+                }
+            }else{
+
+                document.getElementById('frm').submit();
+            }
+        }
+        else document.getElementById('frm').submit();
+
+    }
+    function mycounter(){
+        const currentLength = 100 - document.getElementById('answer').value.length;
+        const counterEle = document.getElementById('counter');
+        counterEle.innerHTML = `Characters Left : ${currentLength}`;
+    }
+    window.onload= mycounter;
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

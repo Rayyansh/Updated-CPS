@@ -1,0 +1,39 @@
+<html>
+    <head  >
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div  style="background-color:cornflowerblue;height: 80px;width: 100%;">
+        <center >
+        <h1 style="float:left;position:relative; top:0px;left: 450px ;">CPS: Creative Problem Solving©</h1>
+         <img style="float: right;height: 80px;width: 150px;" src="{{ url_for('static', filename='1550765319670.png') }}" alt="Nivritti">
+        </center>
+    </div>
+    </head>
+    <body>
+        <form action="/signin" method="POST">
+        <div align="center" style="padding-top: 100px;">
+
+       
+            <center>
+        <label for="uname" style="position: relative;left: -110px;padding: 5px;" >Username</label><br>
+        <input type="text" value="{{data[0]}}" style="padding: 5px;border-radius: 6px;width: 300px;" placeholder="Username" name="uname" id="uname"><br><br>
+            
+        
+        <label for="passwd" style="position: relative;left: -110px;padding: 5px;" >Password</label><br>
+        <input type="password" value="{{data[1]}}" style="padding: 5px;border-radius: 6px;width: 300px;" placeholder="Password" name="passwd" id="passwd"><br>
+    <br>
+        <button style="padding: 5px;" class="but"  type="submit">Sign In</button><br><br>
+
+        <a  href="" style="color:blue;text-decoration: none;">Forgot your Password?</a><br><br>
+
+        <span style="position: absolute;top: 400px;left: 570px;">______________________</span> OR <span style="position: absolute;top: 400px;left: 790px;">______________________</span>
+               <br><br>
+        <label for="">Don't Have Account?</label> <a  href="" style="color:blue;text-decoration: none;">Sign Up now</a><br><br>
+    </center>
+
+    </div>
+
+</form>
+
+    </body>
+</html>

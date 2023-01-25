@@ -1,0 +1,44 @@
+<html>
+    <head  >
+        <style>
+            .previous{
+            height: 30px;
+            width: 65px; background-color:lightskyblue;border: 0px;
+            }
+            .previous:hover{
+                background-color:cyan;
+                cursor: pointer;
+            }
+            .next{
+                height: 30px;width: 60px; background-color:lightskyblue;border: 0px;
+            }
+            .next:hover{
+                background-color:cyan;
+                cursor: pointer;
+            }
+        </style>
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div  style="background-color:cornflowerblue;height: 80px;width: 100%;">
+        <center >
+        <h1 style="float:left;position:relative; top:0px;left: 450px ;">CPS: Creative Problem Solving©</h1>
+         <img style="float: right;height: 80px;width: 150px;" src="{{ url_for('static', filename='1550765319670.png') }}" alt="Nivritti">
+        </center>
+    </div>
+    </head>
+    <body>
+        <form action="">
+           
+        <h3 align="center" style="padding-left: 60px;"> <u> Initial Problem Summary Sentence  </u>   </h3>
+        <pre style="position: absolute;left: 510px;font-family: 'Lucida Sans';">Having entered the initial description of the problem (as shown above), 
+            please summarise the problem into a single sentence.
+            </pre> <br><br>
+        <br><br><br>
+    <textarea class='textarea' maxlength = "50"  placeholder="Enter initial problem summary sentence here   " style="position: absolute;left: 510px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;;border-radius:10px;border-color:black;padding-left: 10px; " name="second" id="" cols="80" rows="20">{{data[3]}}</textarea>
+    <br><br><br>
+        <div style="position: absolute;left: 810px;top: 600px;">
+            <button class="but"  type="submit" formaction="">Save</button >&nbsp; &nbsp; &nbsp; <button  class="previous" type="submit" formaction="/signin" formmethod="GET"> << Back</button ><button class='next'  type="submit" formaction="/list_problem" formmethod="POST">Next >></button>
+        </div>
+    </form>
+    </body>
+</html>

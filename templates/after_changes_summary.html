@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {# new changes here           #}
+            <div class="col-lg-2" style="margin-top: 26px;">
+                <div class="fixed-logo">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for('signin')}}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sensory Awareness / Problem</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-1" style="margin-top: 33px;">
+                <a href="" data-toggle="modal" data-target="#exampleModal">
+                    <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+                </a>
+            </div>
+            {# new changes here           #}
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <br><br>
+                <p class="big-bold-text color1">TASK NO : {{session['user']['problems'][session['id']]['problem_id']}}</p>
+            </div>
+            <div class="col-lg-6">
+                <br><br>
+                <label style="float: left;" for="Prob" class="big-bold-text color1 mr-sm-2">TASK NAME </label>
+                <input type="text" class="form-control" disabled value="{{session['user']['problems'][session['id']]['problem_name']}}" name="prob_name" style="width: 60%;">
+
+            </div>
+        </div>
+    </div>
+    <!-- header -->
+
+    <section>
+        <div class="container summary">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="text-white highlight-text mb-20"> Final Revised “How To” Challenge Statement </h3>
+                </div>
+            </div>
+
+            <div class="col-lg-16  mb-10" style=" font-size: 18px;font-family: 'Cabin';">
+                <u>“How To” Challenge Statement (before clarifying questions):</u> <br>{{session['user']['problems'][session['id']]['before_ambi']| safe}} <br><br>
+
+                <textarea onkeyup="mycounter()" class="form-control" style="font-size: 15px;font-weight: bold;" rows="8" cols="10" maxlength="250" disabled>Explanation: 
+Based on a review and analysis of the clarifying questions and answers, a revised “How To” challenge statement has been generated as the output of this software application.  
+
+This revised “How To” Challenge Statement will be the key input for the next stage of the Creative Problem-Solving process. This result will be the input for the Ideation stage, facilitated by our coaches and facilitators, leading to innovation and solutioning through subsequent stages in the CPS process.
+</textarea><br>
+
+                <u>Answer without ambiguities:</u> <br>
+                {{session['user']['problems'][session['id']]['selected_how_to']['question'] | safe}}
+
+                <br><br>
+
+                <form action="/" method="POST">
+                    <center>
+                        <input style="display: none;" type="text" name="no" value="" id="">
+                        <button type="submit" class="btn btn-md btn-primary" formaction="/download" formmethod="post">Download Report</button>
+                        <button type="submit" class="btn btn-md btn-primary">FINISH</button>
+                        <button style="position:relative;bottom: 5%;left:10%;" formaction="/return_s" formmethod="post" type="submit" class="btn btn-md btn-primary">Log Out</button>
+                        <button style="position:relative;bottom: 5%;left:10%;" formaction="/next_ambi_db" formmethod="GET" type="submit" class="btn btn-md btn-primary">Back</button>
+
+                    </center>
+                </form>
+    </section>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <p>
+                        Results from different problem (Test Run) instead of V9.
+                        <br>The final output of this tool (the Updated “How To” Problem Summary Statement) will be the key input for the next stage of the Creative Problem-Solving process.  This result will be the input for the Ideation stage, facilitated by our coaches and facilitators, leading to innovation and solutioning through subsequent stages in the CPS process.
+
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+
+
+    </script>
+    </div>
+
+</html>

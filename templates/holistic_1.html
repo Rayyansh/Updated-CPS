@@ -1,0 +1,62 @@
+<html>
+    <head  >
+        <style>
+            .previous{
+            height: 30px;
+            width: 65px; background-color:lightskyblue;border: 0px;
+            }
+            .previous:hover{
+                background-color:cyan;
+                cursor: pointer;
+            }
+            .next{
+                height: 30px;width: 60px; background-color:lightskyblue;border: 0px;
+            }
+            .next:hover{
+                background-color:cyan;
+                cursor: pointer;
+            }
+        </style>
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div  style="background-color:cornflowerblue;height: 80px;width: 100%;">
+        <center >
+        <h1 style="float:left;position:relative; top:0px;left: 450px ;">CPS: Creative Problem Solving©</h1>
+         <img style="float: right;height: 80px;width: 150px;" src="{{ url_for('static', filename='1550765319670.png') }}" alt="Nivritti">
+        </center>
+    </div>
+    </head>
+    <body>
+        <form action="">
+        <h3 style="position: absolute;left: 650px;"> <u> Initial Description of the Problem </u>   </h3>
+<br><br><br>
+    <pre style="position: absolute;left: 467px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Examples:.</pre>
+    
+    <br><br><br>
+    <center>
+        <input type="text" style="display: none;" name="no" value="4" id="">
+  
+        <input type="text" style="display: none;" name="page" value="4" id="">
+  
+        <input type="text" style="display: none;" name="answer" value="" id="">
+  
+    {% for i in range(0,ques_list|length) %}
+            
+            <button class="but" value="{{i}}" style=" background-color: white;border: 0px;" type="submit" name="butt" formaction="" formmethod="">
+              
+                <div  style="border:3px black solid ;height: 80px;width: 600px;background-color: white;font-family: 'Lucida Sans';font-size: 15px;"><input type="checkbox"  style="display: none;" value="{{i}}" name="tot_ques" checked> {{i+1}}. {{ ques_list[i] }}<div>
+          </button>
+
+          <br>
+    {% endfor %}
+
+    <br><br><br><br><br><br>
+
+</center>
+    
+    <div style="position: absolute;left: 720px;top: 880px;">
+    <button class="but"  type="submit" formaction="">Save</button >&nbsp; &nbsp; &nbsp; <button  class="previous" type="submit" formaction="/back_from_holistic" formmethod="POST"><< Back</button ><button class='next'  type="submit" formaction="/first_seq_ques_list" formmethod="POST" >Next >></button>
+</div>
+</form>
+    </body>
+</html>

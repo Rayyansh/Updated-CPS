@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                     <div class="col-lg-10">
+                        
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {# new changes here           #}
+            <div class="col-lg-2" style="margin-top: 26px;">
+                <div class="fixed-logo">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> “HOW TO” CHALLENGE STATEMENTS </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-1" style="margin-top: 33px;">
+                <a href="" data-toggle="modal" data-target="#exampleModal">
+                    <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+                </a>
+            </div>
+            {# new changes here           #}
+
+        </div>
+    </div>
+    <!-- header -->
+    <!-- section -->
+    <section>
+        <div class="container problem-desciption">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="text-white highlight-text mb-20"> “HOW TO” CHALLENGE STATEMENTS </h3>
+                </div>
+               
+				<form>
+                <div class="col-lg-12">
+                    <textarea class="form-control" style="font-size: 17px;font-weight: bold;" rows="14" cols="150" maxlength="250" disabled>Explanation: 
+A “How to” statement is one that guides your thinking towards action on how to achieve a specific result. 
+I. Moving Towards statements indicate a desire to move towards pleasure (or greater positive results)?
+        a) How to improve employee retention?
+        b) How to maximize sales revenue? 
+        c) How to increase machine availability?
+
+II. Moving Away From statements indicate a desire to move away from pain (or lessening negative results)?
+        a) How to reduce employee attrition?
+        b) How to minimize sales costs? 
+        c) How to decrease machine downtime?
+Please click “Help” button for additional information and examples.
+
+                        </textarea>
+                </div>
+                    <div class="col-lg-12 text-center">
+                        <button type="submit" formaction="/sum" formmethod="GET" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+                        <button type="submit" formaction="/to_word_ambi_db" formmethod="POST" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                        {#  new change here                      #}
+                        <button style="position:absolute;bottom: -30%;left:10%;"formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
+
+                    </div>
+				</form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p><u> Additional Information and Examples:</u></p>
+
+                    <br>Going back to our earlier examples, below are some potential “How to” challenge statements (in both “Moving Towards” and “Moving Away From” wording) for each one.
+                    <br> 1.) Our organization needs to reduce the high rate of employee attrition.
+
+                    <br> &emsp; A. Moving Towards (pleasure or greater positive results)
+                    <br> &emsp;&emsp; a) How to increase the percentage of employee retention?
+                    <br> &emsp;&emsp; b) How to attract and retain top talent in the industry?
+                    <br> &emsp; B. Moving Away From (pain or negative results)
+                    <br> &emsp;&emsp; a) How to reduce the high rate of employee attrition?
+                    <br> &emsp;&emsp; b) How to decrease our hiring and training expenses?
+
+                    <br> 2.) Our organization needs to reduce the high rate of employee attrition.
+                    <br> &emsp; A. Moving Towards (pleasure or greater positive results)
+                    <br> &emsp;&emsp; a) How to get repeat orders and new customers?
+                    <br> &emsp;&emsp; b) How to become a global leader in our industry sector?
+                    <br> &emsp; B. Moving Away From (pain or negative results)
+                    <br> &emsp;&emsp; a) How to avoid losing customers and repeat orders?
+                    <br> &emsp;&emsp; b) How to prevent a cash flow crisis this year?
+                    
+
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup end -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

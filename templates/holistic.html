@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                     <div class="col-lg-10">
+
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {# new changes here           #}
+            <div class="col-lg-2" style="margin-top: 26px;">
+                <div class="fixed-logo">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Holistic Awareness of the Problem </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-1" style="margin-top: 33px;">
+                <a href="" data-toggle="modal" data-target="#exampleModal">
+                    <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+                </a>
+            </div>
+            {# new changes here           #}
+
+        </div>
+    </div>
+    <!-- header -->
+    <!-- section -->
+    <section>
+        <div class="container problem-desciption">
+            <div class="row">
+			<form>
+                <div class="col-lg-12 text-center">
+                    <h3 class="text-white highlight-text mb-20"> Holistic Awareness of the Problem </h3>
+                </div>
+
+                <div class="col-lg-12">
+                    <textarea class="form-control" style="font-size: 15px;font-weight: bold;" rows="20" cols="150" maxlength="250" disabled>Explanation: 
+Holistic Levels allows you to  check  the base point or premise on which your  problem statement is stemming from .  
+The premise or the base could be from one or any of the levels or from more than two levels: 
+
+&#x2022; Identity
+&#x2022; Belief
+&#x2022; Values
+&#x2022; Skills & Capabilities
+&#x2022; Behavior
+&#x2022; Environment & Culture
+Business problems can occur at any of the above level.  Some problems are intractable as long as they are being addressed at the wrong level.  
+How do you know which level to address? 
+If you are working on a goal statement / objective, then you may also have to add one more level/premise: “Purpose”. 
+The key point is how the human mind structures thoughts and how one can take notice and consider the levels involved, both in problem solving and in the underlying logic itself.  The Holistic Levels indicate the different degrees to which an individual thinks, feels, knows or speaks.
+To fully understand your challenge, it adds value when you recognize from which Holistic Levels the situation originates. The questions that follow are designed to raise your holistic awareness of the Challenge under consideration. 
+
+Please click “Help” button for additional examples.
+                        </textarea>
+                </div>
+				<input type="checkbox"  style="display: none;" value="{{i}}" name="tot_ques" checked>
+                <div class="col-lg-12 text-center">
+                    <button href="" class="btn btn-sm btn-primary" formaction='before_holi' formmethod='POST'> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+
+                    <button class="btn btn-sm btn-primary" type='submit' formaction='after_holi' formmethod='POST'>NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                </div>
+
+            </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+    {#    new change here#}
+    <button style="margin-left: 40px;" formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
+    {#    new change here#}
+    </form>
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    <p> Holistic (or Logical) Levels are a tool which allows us to analyze situations in our life through different perspectives.  These perspectives are usually treated as a hierarchy:
+                        <br> 1.) Purpose
+                        <br> 2.) Identity
+                        <br> 3.) Belief
+                        <br> 4.) Values
+                        <br> 5.) Skills & Capabilities
+                        <br> 6.) Behavior
+                        <br> 7.) Environment & Culture
+
+                        <br>The basic idea behind the Holistic Levels is that each level directly affects those lower in the hierarchy. All of us think through and communicate to ourselves and with others through these levels.  As one moves through each level, thoughts become less trivial and more complex or abstract.
+
+                        <br>The key point is how the human mind structures thoughts and how one can take notice and consider the levels involved, both in problem solving and in the underlying logic itself.  The Holistic Levels indicate the different degrees to which an individual thinks, feels, knows or speaks.
+
+                        <br>To fully understand your problem, it adds value when you recognize from which Holistic Levels the problem, goal or objective originates. The following questions are designed to raise your holistic awareness of the problem (Problem Summary Sentence) under consideration.
+                        </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup end -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

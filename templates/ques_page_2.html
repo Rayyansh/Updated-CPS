@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>Page {{11+no}}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                     <div class="col-lg-10">
+     
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page {{11+no}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for('signin')}}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Problem</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- header -->
+    <!-- section -->
+    <section>
+        <div class="container">
+           <form>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="highlight-text text-white mb-20  ">{{ num +1}}. {{page}}</h4>
+                </div>
+                <div class="col-lg-12">
+                    <h4 class="color1 mb-20"> Examples: </h4>
+                </div>
+            </div>
+			<h3 style="position: absolute;left: 510px;display:none">{{ num +1}}. {{ page }}  </h3>
+			 <input type="text" name="num" id="" value="{{num}}" style="display: none;">
+        <input type="text" name="page" id="" value="{{page}}" style="display: none;">
+        <input type="text" name="no" id="" value="{{no}}" style="display: none;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                       <!-- <textarea class="form-control" rows="10" id="comment" placeholder="Enter Description of the Problem" name="answer">{{ans}}</textarea> -->
+					   
+					    {{tag|safe}}
+                    </div>
+					
+                </div>
+                <div class="col-lg-12 text-center">
+                    <button type="submit" formaction="/seq_ques_list_back" formmethod="POST" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+                    <button  class="btn btn-md btn-primary" type="submit" formmethod="POST" formaction="/save_ans_list" >SAVE</button>
+                    <button type="submit" formaction="/seq_ques_list" formmethod="POST" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                </div>
+                <button style="position:absolute;bottom: 5%;left:10%;"formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
+            </div>
+			    {% for i in range(0,ques_list|length) %}
+            
+    <button  class="but" value="{{i}}" style=" display: none; background-color: white;border: 0px;" type="submit" name="butt" formaction="" formmethod="">
+        <input type="checkbox" style='display:none' value="{{i}}" name="tot_ques" checked> 
+        <div  style="border:3px black solid ;height: 80px;width: 600px;background-color: white;font-family: 'Lucida Sans';font-size: 15px;"><input type="checkbox"  value="{{i}}" name="tot_ques" checked> {{i+1}}. {{ ques_list[i]  }}<div>
+		
+  </button>
+
+  <br>
+{% endfor %}
+			</form>
+        </div>
+    </section>
+    <div class="fixed-logo">
+        <img src="{{url_for('static',filename='images/logo1.jpg')}}" alt="">
+    </div>
+    <div class="fixed-logo-top">
+        <img src="{{url_for('static',filename='images/logo.jpg')}}" alt="">
+    </div>
+    <div class="fixed-help-logo">
+        <a href="" data-toggle="modal" data-target="#exampleModal">
+            <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+        </a>
+    </div>
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    <p> {{holihint}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup end -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+<script>
+    
+    function db(){
+        if(document.getElementById('y').checked){
+            
+            document.getElementById('dv').style.display = "block";
+        }
+        else{
+            
+            document.getElementById('dv').style.display = "none";
+        }
+    }
+</script>  
+</html>

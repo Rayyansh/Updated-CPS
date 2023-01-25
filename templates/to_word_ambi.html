@@ -1,0 +1,60 @@
+<html>
+    <head  >
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div  style="background-color:cornflowerblue;height: 80px;width: 100%;">
+        <center >
+        <h1 style="float:left;position:relative; top:0px;left: 450px ;">CPS: Creative Problem Solving©</h1>
+         <!--<img style="float: right;height: 80px;width: 150px;" src="{{ url_for('static', filename='1550765319670.png') }}" alt="Nivritti"> -->
+        </center>
+    </div>
+    </head>
+<body >
+    
+<form action="" method="POST"><center>
+    <h3 style="position: relative;left: 350px;"> <u> </u>   </h3>
+    <div style=" text-align: left;height:525px;width:800px;font-family: 'Lucida Sans';overflow:auto;padding:0px;padding-top: 70px;">
+        
+        <input style="display: none;" type="text" name="i" value="{{i}}" id="" >
+        <span style="text-align: left;">
+        Question: {{que[to_do_list[i]]|safe}}<br>
+        Answer: <br> <textarea maxlength = "50"  style="height: 400px;width:800px;border: 2px solid black;border-radius: 10px 10px ;font-size: 20px;" {{dis}} type="text" value="{{an[to_do_list[i]]}}" name="ans" id="" ></textarea>
+    
+        <!--
+       <datalist id="answer" name="ans">
+        <option value="{{an[i]}}"></option>
+       </datalist>
+       -->
+       
+      
+    </span>
+        
+    
+    </div>
+    <button {{ds|safe}}  type="submit" formaction="/next_am" formmethod="POST">  NEXT </button>
+    
+</center>
+    <center>
+        {{subbtn|safe}}
+    </center>
+
+   
+    </form>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    <p>{{hint}} </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

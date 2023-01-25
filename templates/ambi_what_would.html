@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {# new changes here           #}
+            <div class="col-lg-2" style="margin-top: 26px;">
+                <div class="fixed-logo">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sensory Awareness of the Problem </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-1" style="margin-top: 33px;">
+                <a href="" data-toggle="modal" data-target="#exampleModal">
+                    <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+                </a>
+            </div>
+            {# new changes here           #}
+        </div>
+    </div>
+    <!-- header -->
+    <!-- section -->
+
+    <section>
+        <div class="container summary">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="text-white highlight-text mb-20"> Clarifying the Initial “How To” Challenge Statement </h3>
+                </div>
+            </div>
+            <form action="" method="POST">
+                <div class="col-lg-17  mb-10" style=" font-size: 18px;font-family: 'Cabin';color: #0b4c68;">
+                    <input style="display:none;" type="text" name="no" id="" value="">
+                    <input style="display: none;" type="text" name="i" value="" id="">
+                    <textarea onkeyup="mycounter()" class="form-control" style="font-size: 15px;font-weight: bold;" rows="12" cols="10" maxlength="250" disabled>Explanation: 
+Words do not automatically convey our intended meaning. We (the listeners – listening to others as well as listening to ourselves) act on the meaning we ourselves make, which is not necessarily the one intended. 
+        
+Therefore, we need a set of questions to clarify vague and ambiguous language. This tool has been developed to ask a series of questions designed to unravel language to avoid misunderstandings and make the right decision. It clarifies communication by prompting the user / problem solver to fill in important missing information, reshape the language if it is misleading, and connect generalities with specific examples. Obtaining the right answer depends on asking the right question.
+As you progress, this tool will ask you a series of questions to clarify such ambiguities and help state your Challenge Statement more clearly.
+
+Please click “Help” button for additional information and examples.</textarea><br>
+
+                    <table style="border: #0b4c68 solid 1px;">
+                        <tr>
+                            <td><p style="font-weight:bold;padding-top: 8px;" class="text-blue">Challenge Statement: </p></td>
+                            <td style="border: #0b4c68 solid 1px;">{{session['user']['problems'][session['id']]['how_to_st'] | safe}}</td>
+                        </tr>
+                        <tr>
+                            <td><p style="font-weight:bold;padding-top: 8px;" class="text-blue">Clarifying Question: </p></td>
+                            <td style="border: #0b4c68 solid 1px;">{{ session['user']['problems'][session['id']]['what_would']['ques'] }}</td>
+                        </tr>
+                        <tr>
+                            <td><p style="font-weight:bold;padding-top: 8px;" class="text-blue">Please Answer: </p></td>
+                            <td style="border: #0b4c68 solid 1px;"><input style="width:800px;" placeholder="Enter Answer Here" type="text" list="what_would" name="ans" id="dat"></td>
+                        </tr>
+
+                    </table>
+                </div>
+        </div>
+        <script>
+
+            function goback() {
+                window.location.hash = window.location.lasthash[window.location.lasthash.length - 1];
+                //blah blah blah
+                window.location.lasthash.pop();
+            }
+
+            function goBack() {
+                history.back();
+            }
+            function gofor() {
+                window.history.forward();
+            }
+        </script>
+        <br>
+        <center>
+            <div class="col-lg-12 text-center">
+                <button type="submit" formaction="/to_word_ambi_db" formmethod="GET" class="btn btn-md btn-primary"> BACK </button>
+
+                <button type="submit" formaction="/next_ambi_db" class="btn btn-md btn-primary" formmethod="POST"> SAVE & NEXT </button>
+
+                {#  new change here                      #}
+                <button style="position:absolute;bottom: -30%;left:10%;" formaction="/return_s" formmethod="post" type="submit" class="btn btn-md btn-primary">Log Out</button>
+
+            </div>
+            </form>
+            </div>
+            </div>
+</section>
+
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <p>
+                        Additional Information and Examples:
+                        <br>
+
+                        1)  Our organization needs to reduce the high rate of employee
+                        attrition.(how high?)
+                        <br>- How to reduce the high rate of employee attrition?( reduce by how much?) how much is the attrition now?
+                        <br>- How to increase the percentage of employee retention?- ( by how many percentage you want to increase/improve?)
+                        <br>- How to attract and retain top talent in the industry? ( talent in which area of expertise?)
+                        <br>- How to decrease our hiring and training expenses? ( decrease by how much)
+
+                        <br>
+                        2) We are unable to get repeat orders and new customers. ( how many customers?)
+                        <br>- How to get repeat orders and new customers? ( how many?)
+                        <br>- How to become a global leader in our industry sector? ( which industry?)
+                        <br>- How to avoid losing customers and repeat orders? ( losing how many? )
+                        <br>- How to prevent a cash flow crisis this year? ( cash flow crisis by how much)
+
+
+
+
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

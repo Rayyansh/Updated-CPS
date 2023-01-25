@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                     <div class="col-lg-10">
+                  
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {# new changes here           #}
+            <div class="col-lg-2" style="margin-top: 26px;">
+                <div class="fixed-logo">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Analysis of the initial problem </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-1" style="margin-top: 33px;">
+                <a href="" data-toggle="modal" data-target="#exampleModal">
+                    <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+                </a>
+            </div>
+            {# new changes here           #}
+
+        </div>
+    </div>
+    <!-- header -->
+    <!-- section -->
+    <section>
+        <div class="container">
+		<form>
+                    <div class="row">
+                        <div class="col-lg-12"><center>
+                            <h4 class="highlight-text text-white mb-20  " > Analysis of Initial Challenge Statement </h4>
+                            </center>   
+                        </div>
+
+                    </div>
+                    <textarea onkeyup="mycounter()" class="form-control" style="font-size: 15px;font-weight: bold;" rows="10"  maxlength = "250"  disabled>Explanation: 
+Based on review and analysis of your initial challenge inputs and answers, alternate Challenge Summary Sentences have been generated. These sentences are in the form of "How To" statements. 
+
+Please review the options below and select the “How To” sentence that best summarizes your challenge.
+If none of the options adequately summarizes your challenge, please click the Check Box and enter your own “How To” challenge statement in the text box.
+
+Summary sentences are limited to 100 characters (including blank spaces).
+</textarea><br>
+                    <h5 class="color1 mb-20"> Please select the "How to" sentence that best summarizes the problem:</h5>  
+                  {% for i in range(0,session['user']['problems'][session['id']]['how_to_stmts']|length) %}
+                    
+                    <ul class="blue-color-list mb-20">
+                        <li><input type="radio" class="check-all" name="data"  id="data" value="{{session['user']['problems'][session['id']]['how_to_stmts'][i]}}" >
+						
+						Question : {{session['user']['problems'][session['id']]['how_to_stmts'][i]|safe}}</li>
+                    </ul>
+					   {% endfor %}
+                    <h5 class="color1 mb-20">If none of the above statement adequately summarize the problem, please enter your own "How To" problem statement in the text box below</h5>
+                    <div class="form-check mb-20">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input addit" name="add" id="add" value="none" onchange="add_check()" > <span class="highlight-text text-white ">Define Alternate “How To” Challenge Summary Sentence</span>
+                        </label>
+                    </div>
+						<span style=" font-size: 22px;font-family: 'Cabin';color: #0b4c68;display: none;" id="add_ch" >
+						Question: <textarea maxlength=50 style="height: 100px;width:400px;border: 2px solid black;border-radius: 10px 10px ;font-size: 20px;"  type="text" value="" name="add_inp" id="" placeholder="Please enter your own “How To” problem statement here."></textarea>
+					   <br> 
+		   </span>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <button  type="submit" formaction="/how_to_screen"  formmethod="GET" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+                    <button {{ds|safe}}  class="btn btn-md btn-primary" type="submit" formaction="/ambiguity_db"  formmethod="POST">SAVE & NEXT</button>
+                    <button style="position:absolute;bottom: 5%;left:1%;"formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
+				
+            
+        </div>
+		</form>
+    </section>
+
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <p><u> Additional Information and Examples:</u></p>
+
+                    
+                    TBD
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup end -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+	function check_all() {
+            if ($('#add').prop("checked")) {
+                $('.chk').prop("checked", false);
+            } else {
+                
+                $('.chk').prop("checked", true);
+            }
+            }
+        function add_check(){
+            const cb = document.getElementById('add');
+            if(cb.checked == true){
+                document.getElementById('add_ch').style.display = "block";
+                $('.check-all').prop("checked", false);
+                
+            }else{
+                document.getElementById('add_ch').style.display = "none";
+                $('.check-all').prop("checked", true);
+            }
+
+            
+        }
+
+        function last(){
+           
+            var ww = document.getElementsByClassName("check-all");
+            var wv = document.getElementsByClassName("addit");
+            var okay = false;
+            
+            for(var i=0;i<ww.length;i++){
+                if(ww[i].checked){
+                    okay=true;
+                    break;
+                }
+            }
+            console.log(document.getElementById('add').checked)
+            if(document.getElementById('add').checked){
+                okay = true;
+            }
+            if(!okay){
+                alert("Please Select Any One Question");
+                event.preventDefault();
+            }
+            else{
+                document.getElementById('frmm').submit();
+            }
+        }
+        $('#frmm').submit(function() {
+
+            last();
+        });
+		function goBack() {
+  window.history.back();
+}
+function gofor() {
+  window.history.forward();
+}
+
+
+	</script>
+</body>
+
+</html>

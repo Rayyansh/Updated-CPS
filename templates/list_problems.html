@@ -1,0 +1,120 @@
+0<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row bg-1 header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {# new changes here           #}
+        <div class="col-lg-2" style="margin-top: 26px;">
+            <div class="fixed-logo">
+                <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sensory Awareness of the Problem </li>
+
+                </ol>
+            </nav>
+        </div>
+        <div class="col-lg-1" style="margin-top: 33px;">
+            <a href="" data-toggle="modal" data-target="#exampleModal">
+                <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+            </a>
+        </div>
+        {# new changes here           #}
+
+    </div>
+</div>
+<!-- header -->
+<!-- section -->
+<section>
+    <div class="container problem-desciption">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3 class="text-white highlight-text mb-20"> Sensory Awareness of the Problem </h3>
+            </div>
+
+            <form>
+                <div class="col-lg-12">
+                    <textarea class="form-control" style="font-size: 17px; font-weight: bold;" rows="15" cols="150" maxlength="250" disabled>Explanation: 
+> Here, a problem/situation/challenge may be the same but the interpretation of that situation by two individuals may be immensely different.
+> In this current tool you understand the problem/ challenges .
+> People perceive the world around them through their five senses. 
+> Each person perceives the world differently, using the same senses to greater or lesser extent. 
+> We use our sense of sight, sense of sound, sense of touch, sense of smell and sense of taste to perceive a situation/problem/challenge/goal.
+> In some cases, the challenge may have an actual sensory component. Though all the five senses may not be used fully, one or two senses will be predominant in each person. One’s personal predominance will affect how we communicate to ourself and with others
+The questions that follow in each succeeding slides are designed to raise your sensory awareness of the challenge under consideration. 
+
+ "Knowing how each of our senses influences our internal perception leads to a more complete awareness of the situation.” 
+
+Please click “Help” button for additional information and examples.</textarea>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <button type="submit" formaction="/second" formmethod="GET" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+                    <button type="submit" formaction="/list_problems_db_ns" formmethod="POST" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                </div>
+                <button formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- popup -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p><u> Additional Information & Examples: </u></p>
+              
+                    <div class="">
+                        <img src="{{url_for('static',filename='images/Picture1.png')}}" alt="" width="700" height="500" />
+
+        </p>
+                    </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- popup end -->
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

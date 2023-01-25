@@ -1,0 +1,69 @@
+<html>
+    <head  >
+        <style>
+            .previous{
+            height: 30px;
+            width: 65px; background-color:lightskyblue;border: 0px;
+            }
+            .previous:hover{
+                background-color:cyan;
+                cursor: pointer;
+            }
+            .next{
+                height: 30px;width: 60px; background-color:lightskyblue;border: 0px;
+            }
+            .next:hover{
+                background-color:cyan;
+                cursor: pointer;
+            }
+        </style>
+        
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div  style="background-color:cornflowerblue;height: 80px;width: 100%;">
+        <center >
+        <h1 style="float:left;position:relative; top:0px;left: 450px ;">CPS: Creative Problem Solving©</h1>
+         <img style="float: right;height: 80px;width: 150px;" src="{{ url_for('static', filename='1550765319670.png') }}" alt="Nivritti">
+        </center>
+    </div>
+    </head>
+    <body>
+        <form action="">
+        <h3 style="position: absolute;left: 510px;">{{ num +1}}. {{ page }}  </h3>
+        <input type="text" name="num" id="" value="{{num}}" style="display: none;">
+        <input type="text" name="page" id="" value="{{page}}" style="display: none;">
+        <input type="text" name="no" id="" value="{{no}}" style="display: none;">
+<br><br><br>
+
+    <pre style="position: absolute;left: 510px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Examples:.</pre>
+    {% for i in range(0,ques_list|length) %}
+            
+    <button  class="but" value="{{i}}" style=" display: none; background-color: white;border: 0px;" type="submit" name="butt" formaction="" formmethod="">
+        
+        <div  style="border:3px black solid ;height: 80px;width: 600px;background-color: white;font-family: 'Lucida Sans';font-size: 15px;"><input type="checkbox"  value="{{i}}" name="tot_ques" checked> {{i+1}}. {{ ques_list[i]  }}<div>
+  </button>
+
+  <br>
+{% endfor %}
+    <br><br><br>
+    
+       {{tag|safe}}
+    
+    <div style="position: absolute;left: 810px;top: 650px;">
+    <button class="but"  type="submit" formmethod="POST" formaction="/save_ans_list">Save</button >&nbsp; &nbsp; &nbsp; <button  class="previous" type="submit" formaction="/seq_ques_list_back" formmethod="POST"> << Back</button ><button  class="next" type="submit" formaction="/seq_ques_list" formmethod="POST">Next >></button >
+</form>  
+<script>
+    
+    function db(){
+        if(document.getElementById('y').checked){
+            
+            document.getElementById('dv').style.display = "block";
+        }
+        else{
+            
+            document.getElementById('dv').style.display = "none";
+        }
+    }
+</script>  
+</body>
+</html>

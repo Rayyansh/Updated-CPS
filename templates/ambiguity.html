@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {# new changes here           #}
+            <div class="col-lg-2" style="margin-top: 26px;">
+                <div class="fixed-logo">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sensory Awareness of the Problem </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-1" style="margin-top: 33px;">
+                <a href="" data-toggle="modal" data-target="#exampleModal">
+                    <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+                </a>
+            </div>
+            {# new changes here           #}
+        </div>
+    </div>
+    <!-- header -->
+    <!-- section -->
+
+    <section>
+        <div class="container summary">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="text-white highlight-text mb-20"> Ambiguity Checker for “How To” Problem Statement</h3>
+                </div>
+            </div>
+            <form action="" method="POST">
+                <div class="col-lg-10  mb-10" style=" font-size: 18px;font-family: 'Cabin';color: #0b4c68;">
+                    <input style="display:none;" type="text" name="no" id="" value="{{no}}">
+                    <input style="display: none;" type="text" name="i" value="{{i}}" id="">
+
+                    <textarea onkeyup="mycounter()" class="form-control" style="font-size: 15px;font-weight: bold;" rows="12" cols="10" maxlength="250" disabled>Explanation: 
+Ambiguity refers to a word, phrase or statement that can be interpreted in multiple ways because of assumptions and biases.  Ambiguity can lead to uncertainty or misunderstanding. 
+
+A small number of careless word choices cause most of the potential misunderstandings. These word choices can be classified as Deletions, Distortions or Generalizations. 
+            - Deletions occur when information, which could be useful in understanding a person’s communication to us, has been left out of the message. Once you've recovered the deleted information, you have more knowledge and awareness about the person’s point of reference.
+            - Distortions occur when one specific experience represents a whole class of experiences. 
+            - Generalizations occur when one specific experience represents a whole class of experiences. 
+
+Please click “Help” button for additional information and examples.</textarea><br>
+                    Question: {{answer[to_do_list[i]] | safe}}<br>
+                    {% for j in range( 0,queries[question[i]][0] | length  ) %}
+                    <table style="border: #0b4c68 solid 1px;">
+                        <tr>
+                            <td><p style="font-weight:bold;padding-top: 8px;" class="text-blue">Vague: </p></td>
+                            <td style="border: #0b4c68 solid 1px;">{{queries[question[i]][1][j] }}</td>
+                        </tr>
+                        <tr>
+                            <td><p style="font-weight:bold;padding-top: 8px;" class="text-blue">Clarify: </p></td>
+                            <td style="border: #0b4c68 solid 1px;">{{ session['user']['problems'][session['id']]['what_would']['ques'] }}</td>
+                        </tr>
+                        <tr>
+                            <td><p style="font-weight:bold;padding-top: 8px;" class="text-blue">Please Answer: </p></td>
+                            <td style="border: #0b4c68 solid 1px;"><input style="width:800px;" placeholder="Enter Answer Here" type="text" list="what_would" name="ans" id="dat"></td>
+                        </tr>
+
+                    </table>
+
+
+                    <!-- Question: {{question[i] | safe}}<br> -->
+                    <!--    Vague: <i style="color: blue;"> {{ queries[question[i]][0][j]  }} </i> <br> -->
+                    Query: <br>
+
+                    Please Answer: <input style="width:400px;" type="text" list="answer{{i}}" name="ans{{i}}" id="dat">
+                    <!-- <datalist  id="answer{{i}}">
+                     <option value="0"></option>
+                    </datalist> -->
+
+
+                    <br>
+                    {% endfor %}
+                    <br><br>
+
+                </div>
+                <button style="position:fixed;bottom: 5px;left:10%;" formaction="/return_s" formmethod="post" type="submit" class="btn btn-md btn-primary">Log Out</button>
+        </div>
+        <script>
+
+            function goback() {
+                window.location.hash = window.location.lasthash[window.location.lasthash.length - 1];
+                //blah blah blah
+                window.location.lasthash.pop();
+            }
+
+            function goBack() {
+                history.back();
+            }
+            function gofor() {
+                window.history.forward();
+            }
+        </script>
+        <br>
+        <center>
+
+            <div class="col-lg-12 text-center">
+                <button type="submit" formaction="/to_word_ambi_db" formmethod="GET" class="btn btn-md btn-primary"> BACK </button>
+
+                <button type="submit" formaction="/next_ambi_db" class="btn btn-md btn-primary" formmethod="POST"> SAVE & NEXT </button>
+
+                {#  new change here                      #}
+                <button style="position:absolute;bottom: -30%;left:10%;" formaction="/return_s" formmethod="post" type="submit" class="btn btn-md btn-primary">Log Out</button>
+
+            </div>
+            </form>
+            </div>
+            </div>
+    </section>
+
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <p>
+                        Words do not automatically convey their intended meaning.  We (the listeners – listening to others as well as listening to ourselves) act on the meaning we ourselves make, which is not necessarily the one intended. Therefore, we need a set of questions to clarify ambiguities.
+
+                        <br>When we express an idea in language there are three possible outcomes.
+
+                        <br> - We generalize from a particular example as if it represents all possibilities.
+                        <br> - We delete or ignore facts.
+                        <br> - We distort situation by giving descriptive words a meaning they do not support.
+
+                        <br>The tool has been developed to ask a series of questions designed to unravel language to avoid misunderstandings.  It clarifies communication by prompting the user / problem solver to fill in important missing information, reshape the language if it is misleading, and connect generalities with specific examples. Obtaining the right answer depends on asking the right question.
+                        <br>As you progress, this tool will ask you a series of questions to clarify such ambiguities and help state your problem summary sentence more clearly.
+
+
+
+
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

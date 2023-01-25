@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Page {{session['page_no']}}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                     <div class="col-lg-10">
+                        
+                    </div>
+                    <div class="col-lg-2">
+                        <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">“HOW TO” CHALLENGE STATEMENTS </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- header -->
+    <!-- section -->
+    <section>
+        <div class="container problem-desciption">
+            <div class="row">
+			<form>
+                <div class="col-lg-12 text-center">
+                    <h3 class="text-white highlight-text mb-20"> “HOW TO” CHALLENGE STATEMENTS </h3>
+                </div>
+                
+                <div class="col-lg-12">
+                    <textarea  class="form-control" style="font-size: 15px;font-weight: bold;" rows="20" cols="150" maxlength = "250"  disabled>Explanation: 
+A “How to” statement is one that guides your thinking towards action on how to achieve a specific result. 
+I. Moving Towards statements indicate a desire to move towards pleasure (or greater positive results)?
+    a) How to improve employee retention?
+    b) How to maximize sales revenue? 
+    c) How to increase machine availability?
+
+II. Moving Away From statements indicate a desire to move away from pain (or lessening negative results)?
+    a) How to reduce employee attrition?
+    b) How to minimize sales costs? 
+    c) How to decrease machine downtime?
+
+Please click “Help” button for additional information and examples. </textarea>
+                </div>
+				<input type="checkbox"  style="display: none;" value="{{i}}" name="tot_ques" checked>
+                <div class="col-lg-12 text-center">
+                    <button href="" class="btn btn-sm btn-primary" formaction='before_holi' formmethod='POST'> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+           
+                    <button class="btn btn-sm btn-primary" type='submit' formaction='after_holi' formmethod='POST'>NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                </div>
+                
+            </div>
+        
+            </div>
+			
+        </div>
+       
+    
+    </section>
+    <button style="position:absolute;bottom: -90px;left:10%;"formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
+</form>
+
+    <div class="fixed-logo">
+        <img src="{{url_for('static',filename='images/logo1.jpg')}}" alt="">
+    </div>
+    <div class="fixed-logo-top">
+        <img src="{{url_for('static',filename='images/logo.jpg')}}" alt="">
+    </div>
+
+    <div class="fixed-help-logo">
+        <a href="" data-toggle="modal" data-target="#exampleModal">
+            <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+        </a>
+    </div>
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    <p> Holistic (or Logical) Levels are a tool which allows us to analyze situations in our life through different perspectives.  These perspectives are usually treated as a hierarchy: 
+                        <br> 1.) Purpose 
+                        <br> 2.) Identity 
+                        <br> 3.) Belief 
+                        <br> 4.) Values 
+                        <br> 5.) Skills & Capabilities 
+                        <br> 6.) Behavior 
+                        <br> 7.) Environment & Culture 
+                        
+                        <br>The basic idea behind the Holistic Levels is that each level directly affects those lower in the hierarchy. All of us think through and communicate to ourselves and with others through these levels.  As one moves through each level, thoughts become less trivial and more complex or abstract.
+                        
+                        <br>The key point is how the human mind structures thoughts and how one can take notice and consider the levels involved, both in problem solving and in the underlying logic itself.  The Holistic Levels indicate the different degrees to which an individual thinks, feels, knows or speaks.
+                        
+                        <br>To fully understand your problem, it adds value when you recognize from which Holistic Levels the problem, goal or objective originates. The following questions are designed to raise your holistic awareness of the problem (Problem Summary Sentence) under consideration. 
+                        </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup end -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

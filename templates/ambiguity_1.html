@@ -1,0 +1,64 @@
+<html>
+    <head  >
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div  style="background-color:cornflowerblue;height: 80px;width: 100%;">
+        <center >
+        <h1 style="float:left;position:relative; top:0px;left: 450px ;">CPS: Creative Problem Solving©</h1>
+         <img style="float: right;height: 80px;width: 150px;" src="{{ url_for('static', filename='1550765319670.png') }}" alt="Nivritti">
+        </center>
+    </div>
+    </head>
+<body >
+    
+<form action="" method="POST">
+    <h3 style="position: absolute;left: 650px;"> <u> Ambiguity Checker for “How To” Problem Statement</u>   </h3>
+    <div style="height:500px;width:500px;font-family: 'Lucida Sans';overflow:auto;padding:10px;padding-top: 70px;">
+        
+        <input style="display: none;" type="text" name="i" value="{{i}}" id="" >
+       <!-- Question: {{question[i] | safe}}<br> -->
+        Answer: {{answer[to_do_list[i]] | safe}}<br>
+        {% for j in range( 0,queries[question[i]][0] | length  ) %}
+            Vague: <i style="color: blue;"> {{ queries[question[i]][0][j]  }} </i> <br>
+            Query: {{queries[question[i]][1][j] }}<br>
+        <input type="text" name="qu" id="qu" value="{{i}}" style="display: none;" >
+        Please Answer: <input type="text" list="answer{{i}}" name="ans{{i}}" id="dat"  >
+       <datalist id="answer{{i}}">
+        <option value="0"></option>
+       </datalist>
+
+       
+       <br>
+       {% endfor %}
+        <br><br>
+       
+        
+    </div>
+    <script>
+
+function goback() {
+    window.location.hash = window.location.lasthash[window.location.lasthash.length-1];
+    //blah blah blah
+    window.location.lasthash.pop();
+}
+
+        function goBack() {
+  history.back();
+}
+function gofor() {
+  window.history.forward();
+}
+    </script>
+    <br>
+    <center>
+        <button onclick="goBack()" > BACK </button>
+    <button type="submit"  formaction="/next_ambi" formmethod="POST"> SAVE & NEXT </button>
+    <button onclick="gofor()" > Next </button>
+        {{subbtn}}
+    </center>
+
+   
+    </form>
+
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Dashboard</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row bg-1 header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- header -->
+<!-- section -->
+<section>
+
+    <form id="frm"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 fixed-logo">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:100;">
+                </div>
+                <div class="col-lg-5">
+
+                    <h4 class="highlight-text text-white mb-20">MY DASHBOARD</h4>
+
+                </div>
+                <div class="col-lg-1 offset-lg-1">
+                    <div class="fixed-help-logo">
+                        <a href="" data-toggle="modal" data-target="#exampleModal">
+                            <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-lg-12">
+                    
+                    <h5 class="color1 mb-20">
+                        <br>
+                        Explanation:
+                        <br>
+                        <br> “My Dashboard” is where you can view a listing of all your tasks (challenges).
+                        <br>    Along with viewing the list of existing tasks, you can also:
+                        <br>
+                        <br>&nbsp;&nbsp; 1. Create & Define New Task <br>&nbsp;&nbsp; 2. Edit Existing Task <br>&nbsp;&nbsp; 3. Delete Existing Task.
+                    </h5>
+
+
+                </div>
+            </div>
+            <div style="text-align:center;" >
+                <button  formaction="/create_problem" formmethod="post"  type="submit" class="btn btn-md btn-primary">Define New Task</button>
+            </div>        <br>
+
+            {% for problem in session['user']['problems'] %}
+                <div class="row mb-20">
+                    <div class="col-lg-2">
+                        <p class="big-bold-text color1">{{problem['problem_id']}}</p>
+                    </div>
+                    <div class="col-lg-8">
+                        <form class="form-inline" action="#">
+                            <input type="text" value="{{problem['problem_name']}}" class="form-control" placeholder="PROBLEM NAME" name="Prob" style="width: 60%;">
+                        </form>
+                    </div>
+                    <div class="col-lg-2">
+                        <button id="edit-button" formaction="/go_to_problem/{{problem['problem_id']}}" formmethod="post"  type="submit" class="btn btn-md btn-primary">EDIT</button>
+                        <input id="delete-button" onclick="return confirm('Are you sure want to delete this Task?');" formaction="/delete_problem/{{problem['problem_id']}}" formmethod="post" value="DELETE" type="submit" class="btn btn-md btn-primary">
+                    </div>
+                </div>
+                </form>
+            {% endfor %}
+            {#new changes here #}
+            <button id='logout-button'  formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
+
+
+
+
+    </div>
+</section>
+
+
+
+
+<!-- popup -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <p>
+                    Nivritti Creative Problem Solving (CPS©) is a set of framework, tools and techniques using a multi-dimensional approach arranged into various stages to address business as well as leadership/ individual challenges.
+                    <br><br>
+                    There are six interconnected stages in the CPS framework. This tool facilitates the first two stages of the framework, which are designed to help you identify, explore and articulate your specific issue.
+                    <br><br>
+                    The tool uses the word “problem” as a neutral term. Words like problem, issue, situation, goal, objective, opportunity could also be used, since each issue under consideration is unique.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- popup end -->
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    function validate(form) {
+
+        // validation code here ...
+
+
+    }
+</script>
+</body>
+
+</html>

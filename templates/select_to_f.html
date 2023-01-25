@@ -1,0 +1,134 @@
+<html>
+    <head  >
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <div  style="background-color:cornflowerblue;height: 80px;width: 100%;">
+        <center >
+        <h1 style="float:left;position:relative; top:0px;left: 450px ;">CPS: Creative Problem Solving©</h1>
+         <img style="float: right;height: 80px;width: 150px;" src="{{ url_for('static', filename='1550765319670.png') }}" alt="Nivritti">
+        </center>
+    </div>
+    </head>
+<body >
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<form action="" method="POST" id="frmm"><center>
+    <h3 style="position: relative;left: 350px;"> <u> </u>   </h3>
+   
+    <div style=" text-align: left;height:525px;width:800px;font-family: 'Lucida Sans';overflow:auto;padding:0px;padding-top: 70px;"> 
+        <h4> Based on review and analysis of the initial problem inputs and answers, alternate problem summary sentences have been generated. </h4><br>
+        <li>These sentences are in the form of "How To" statements. </li>
+<li>A “How to” statement is one that guides your thinking towards action on how to achieve a specific result.  </li>
+
+
+<br>
+<h4>Please select the “How To” sentence that best summarizes the problem: 
+</h4>
+        {% for i in range(0,to_do_list|length) %}
+        <span style="text-align: left;">
+            <input class="check-all" type="radio" name="data" id="cdd" value="{{to_do_list[i]}}" >
+        {{i}}
+       <!-- Question: {{que[to_do_list[i]]|safe}}<br> -->
+        Question: {{an[to_do_list[i]]|safe}}<br>
+        
+        <!-- Answer: <br> <textarea  style="height: 100px;width:400px;border: 2px solid black;border-radius: 10px 10px ;font-size: 20px;"  type="text" value="" name="ans" id="" >{{an[to_do_list[i]]}}</textarea> -->
+        <br>
+        <br>
+        {% endfor %}
+        <!--
+       <datalist id="answer" name="ans">
+        <option value="{{an[i]}}"></option>
+       </datalist>
+       -->
+<h4>If none of the above statements adequately summarizes the problem, please enter your own “How To” problem statement in the text box below</h4>
+       <input class="addit" type="checkbox" name="add" id="add" value="none" onchange="add_check()"  > Add How to Ques-Ans
+
+       <span  id="add_ch" style="display: none;">
+        Question: <textarea maxlength = "50"   style="height: 100px;width:400px;border: 2px solid black;border-radius: 10px 10px ;font-size: 20px;"  type="text" value="" name="add_inp" id="" placeholder="Please enter your own “How To” problem statement here."></textarea>
+       <br> 
+       </span>
+
+    <script>
+        function check_all() {
+            if ($('#add').prop("checked")) {
+                $('.chk').prop("checked", false);
+            } else {
+                
+                $('.chk').prop("checked", true);
+            }
+            }
+        function add_check(){
+            const cb = document.getElementById('add');
+            if(cb.checked == true){
+                document.getElementById('add_ch').style.display = "block";
+                $('.check-all').prop("checked", false);
+                
+            }else{
+                document.getElementById('add_ch').style.display = "none";
+                $('.check-all').prop("checked", true);
+            }
+
+            
+        }
+
+        function last(){
+           
+            var ww = document.getElementsByClassName("check-all");
+            var wv = document.getElementsByClassName("addit");
+            var okay = false;
+            
+            for(var i=0;i<ww.length;i++){
+                if(ww[i].checked){
+                    okay=true;
+                    break;
+                }
+            }
+            console.log(document.getElementById('add').checked)
+            if(document.getElementById('add').checked){
+                okay = true;
+            }
+            if(!okay){
+                alert("Please Select Any One Question");
+                event.preventDefault();
+            }
+            else{
+                document.getElementById('frmm').submit();
+            }
+        }
+        $('#frmm').submit(function() {
+
+            last();
+        });
+            
+    </script>
+    </span>
+    <script>
+        function goBack() {
+  window.history.back();
+}
+function gofor() {
+  window.history.forward();
+}
+
+
+
+
+    </script>
+    
+<script>
+    
+</script>
+    </div>
+    <button onclick="goBack()" > BACK </button>
+  <!--  <button {{ds|safe}}  type="submit" formaction="/select_how" formmethod="POST">  NEXT </button>-->
+  <button {{ds|safe}}  type="submit" formaction="/ambiguity"  formmethod="POST">  SAVE & NEXT </button>
+  <button onclick="gofor()" > Next </button>
+</center>
+    <center>
+        {{subbtn|safe}}
+    </center>
+
+   
+    </form>
+
+    </body>
+</html>

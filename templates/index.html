@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-1 header">
+            <div class="container">
+                <div class="row">
+                     <div class="col-lg-12 text-center">
+                         <h3 class="text-white text-center">Nivritti Creative Problem Solving (CPS©)<sup></sup> </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#  new changes for help button and logo   #}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                    <h3 class="text-white highlight-text mb-20" style="margin-top: 45px;"> WELCOME </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center fixed-logo-top">
+                <img src="{{url_for('static',filename='images/logo1.png')}}" alt="" style="max-height: 180px;width: 320px;">
+            </div>
+        </div>
+        {#  new changes for help button and logo   #}
+    </div>
+    <!-- header -->
+    <!-- section -->
+    <section>
+        <div class="container ">
+            
+
+                <div class="col-lg-12 text-center" >
+                    <h6 class="color1 mb-12 col-lg-12 text-left" style="text-align: center; border: 2px navy solid;padding:50px">
+                        Nivritti Creative Problem Solving (CPS©) is a set of framework, tools and techniques designed to help you identify, explore and articulate your specific problem in a concise, clear and crisp way.
+                        <br><br>
+                        Nivritti CPS© uses the word “challenge” as a generic, neutral term. You may also use words like problem, issue, situation, goal, objective, or opportunity, since each issue under consideration is unique.
+                    </h6>
+                </div>
+				<form>
+                    <br><br>
+                
+                <div class="col-lg-12 text-center">
+                    <button type="submit" formaction="/login" formmethod="POST" style="position: relative;right: 30px;" class="btn btn-bg btn-primary">Login</button>
+                    <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary">Signup</button>
+                </div>
+				</form>
+            
+        </div>
+    </section>
+
+
+    <!-- popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    <p> Vishwa’s CPS Stages, Framework and Te(a)chniques (CPS©) is a set of framework, tools and techniques using a multi-dimensional approach arranged into various stages to address business as well as leadership/ individual challenges. 
+<br><br>
+There are six interconnected stages in the CPS framework. This tool facilitates the first two stages of the framework, which are designed to help you identify, explore and articulate your specific issue. 
+<br><br>
+The tool uses the word “problem” as a neutral term. Words like problem, issue, situation, goal, objective, opportunity could also be used, since each issue under consideration is unique. 
+</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup end -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

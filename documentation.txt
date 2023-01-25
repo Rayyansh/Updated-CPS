@@ -1,0 +1,209 @@
+
+MAIN FILE: assignment.py:
+----------------------------------------------------------------------------------------------------------------------------------------
+Works on port no: 33507
+install on softwares: pip install -m requirements.txt
+Structure: 
+HTML FILEs in templates folder
+CSS and images in Static folder
+command to run: python assignment.py
+----------------------------------------------------------------------------------------------------------------------------------------
+GLOBAL VARIABLES:
+ques [ list ]: storing questions before holistic questions
+queslist [ list ]: storing questions of holistic questions
+ans_dict [ dictionary ] : stores answers mapping to their corresponding questions from "ques" and "ques_list" 
+question [ list ]: stores selected questions as per user
+answer [ list ]: stores answers of selected questions given by the user
+tot [ list ]: storing position of selected questions in "ques" list.
+tot_list [ list ]: storing position of selected questions in "ques_list" list.
+queries [ dictionary ]: { question:answer } answer of given question
+data [ list ]: stores all questions
+----------------------------------------------------------------------------------------------------------------------------------------
+verb_or_not():
+	=> checking the word is verb or not
+
+signin():
+
+	=> renders first_page.html
+	=> resets all values in the "data" list
+	
+tag_ret(n, ans):
+		- this function is used in changing the type of data from "text" to "checkboxes" also giving particular data stored in "lis" variable
+		- from here the checkboxes for HTML are passed
+	=> lis [list]: checkboxes variables
+	=> if it is 3rd question then n=3 and if it is 6th question then n=6, questions are of holistic question list
+	
+signing():
+	=> works on the URL of "/signin"
+	if( get request) then:
+		it means user already LOGGED IN
+		renders first_page.html
+	else:
+		USER JUST LOGGED IN, So validate the Credentials
+		takes username and password and validates and Routes to further questions:
+		renders first_page.html
+		
+second():
+	=> works on the URL of "/second"
+	if( get request) then:
+		renders second.html
+	else:
+		=> takes user input
+		=> stores problem description in data[2]
+		=> stores problem name in data[6] 
+		=> appends question to question list 
+		=> renders second.html and also passes "data" as a parameters to be used in HTML pages
+		
+list_problems():	
+	=> works on the URL of "/list_problems"
+	=> if POST request:
+			=> tot list takes all positions of questions 
+			=> "page" variable stores the position of the current question to be displayed in the HTML pages
+			=> ans_dict[ques[int(tt[page])]]="" , in this code the answer of the question to be displayed is made NULL, so to store the new one  
+			=> renders ques_page.html, passing params such as, data, ques, page, ans, 
+	   else:
+			=> renders list_problems.html
+
+holistic():
+	=> works on the URL of "/holistic"
+	=> tot_list list takes all positions of questions 
+	=> "page" variable stores the position of the current question to be displayed in the HTML pages
+	=> ans_dict[ques[int(tt[page])]]="" , in this code the answer of the question to be displayed is made NULL, so to store the new one 
+	=> "tag" variable uses "tar_get()" function getting question format, whether a "textbox" or a "checkbox" 	
+	=> renders ques_page_2.html, passing params such as, data, ques, page, ans, 
+	
+ques_page():	
+	=> works on the URL of "/ques_page"
+	=>if GET Request:
+		=> set page value as zero(0)
+		=> renders ques_page.html
+	=> else: 
+		=> take question number from the html forms and store it in "page"
+		=> renders "ques_page.html"
+		
+holi():
+	=> works on the URL of "/holi"	
+	renders "holistic.html"
+	
+save_ans():   
+	=> works on the URL of "/save_ans"
+	
+	NOT USED YET
+	for the save button in the question pages
+	
+ques_page2():	
+	=> works on the URL of "/ques_page2"
+	=>if GET Request:
+		=> set page value as zero(0)
+		=> takes tag from tag_ret
+		=> renders ques_page_2.html
+	=> else: 
+		=> take question number from the html forms and store it in "page"
+		=> renders "ques_page_2.html"	
+	
+first_seq_ques():
+		url: "/first_seq_ques"
+		=> displays first question in sequence for questions before holistic
+		=> used by NEXT button
+		=> if POST request:
+				if HOLISTIC:
+					=> tot_ques are just for selecting the questions, used for previous version of code NOT USED NOW: REDUNDANT
+					=> renders ques_page.html
+				else: renders holistic	
+			else: renders list_of_problems question list	
+		
+seq_ques():
+			url:"/seq_ques"
+			=> displays questions and maintain the order of going BACK and FORTH in the system.
+			=> used by NEXT button
+			=> takes input as question number, answer of previous question and stores in the system by the HTML forms
+			=> reassignment of ques_list
+			=> checks tag for holistic question type and set for next question to be displayed.
+			=> increments the sequence number 
+			=> renders ques_page.html with relevant params
+			=> also checks the end of sequence and redirects to the next page
+			
+first_seq_ques_list():
+url:"/first_seq_ques_list"
+			=> displays first question in sequence
+			=> displays first question in sequence for questions after holistic 
+			=> renders first question of the sequence
+			=> renders ques_page_2.html ( suitable for questions after holistic )
+			
+seq_ques_list():
+url:"/seq_ques_list"
+			=> manages the sequence of questions of after holistic to be displayed sequentially.
+			=> HERE the tar_get is mainly used for setting up the question type by the help of tar_get() fucntion.
+			=> stores the previously updated question's answers
+			
+seq_ques_list_back():
+url:"/seq_ques_list_back"
+			=> used by BACK button for going back in the software
+			=> this is mainly used within the holistic questions
+				
+seq_ques_back():
+url:"/seq_ques_back"
+			=> used by BACK button for going back in the software
+			=> this is mainly used for the questions before holistic question list.				
+				
+back_from_holistic():
+			=> used for going back from holistic section to previous list of problems
+					
+summary():
+			=> displays the summary page and renders summary.html
+						
+ambigous():
+			=> function check the ambiguity in the asnwer and returns list of ambiguous words and particular question to be asked on it
+				
+get_data():
+			=> updating global variable from local variables
+					
+ambiguity():
+url:"/ambiguity"
+			=> gets all data from the summary page 
+			=> preprocess it properly 
+			=> generates how to statement from the answers 
+			=> adds the first question of "what would happen..." 
+			=> renders ambiguity.html
+				
+next_ambi():
+url:"/next_ambi"
+			=> OUTDATED ONE - NOT USED for this purpose
+			=> checks ambiguity question one-by-one sequentially 
+			---------------------------------------------
+			=> CURRENTLY used for checking how to statement and checking ambiguity 
+			=> renders ambi_repeat.html
+			=> replace NULL string by NaN
+next_ambi_2():
+url:"/next_ambi_2"				
+			=> PRVIOUSLY USED FOR:
+			=> checks ambiguity question one-by-one sequentially 
+			=> CURRENTLY used for:
+			=> checking ambiguity of answer given on "what would happen..." 
+
+
+submitting():
+url:"/submitting"
+			=> submits the data and displayed on after changes summary template.
+			=> renders after_changes_summary.html
+			
+				
+to_word_ambi():
+url:"/to_word_ambi"
+			=> used for generating how to statement by detecting "to" , "to be" , "because of" , "since" , "as" , "because"
+			=> appends data to question_list
+				
+		
+select_how():
+url"/select_how"
+			=> used for selecting particular how to statement 
+			=> and renders to_word_ambi.html for further process
+			
+finish():
+url:"/finish"
+			=> renders final.html #LOGOUT
+
+return_s():
+url:"/return_s"
+			=> returns to sign-in page while reseting the software data
+			
