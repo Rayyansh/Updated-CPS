@@ -676,7 +676,7 @@ def route_download():
 
     final_question = session['user']['problems'][session['id']]['selected_how_to']['question']
     print(final_question)
-    dataFrame = pd.DataFrame(data = all_problems, columns=['problem_id','initial_desc','initial_prob_st','how_prob_feel','how_prob_look','how_prob_smell','how_prob_sound','how_prob_taste','is_prob_envt_culture','is_prob_real','is_prob_skill_gap','is_prob_value_sys','final_question'])
+    dataFrame = pd.DataFrame(data = all_problems, columns=['problem_id','initial_desc','initial_prob_st','how_prob_feel','how_prob_look','how_prob_smell','how_prob_sound','how_prob_taste','purpose','for_whom','is_prob_envt_culture','is_prob_real','is_prob_skill_gap','is_prob_value_sys','behavior_prob','final_question'])
 
     # index = dataFrame.loc[:,['problem_id','initial_desc','initial_prob_st','how_prob_feel','how_prob_look','how_prob_smell','how_prob_sound','how_prob_taste','is_prob_envt_culture','is_prob_real','is_prob_skill_gap','is_prob_value_sys']]
     # inserting_final_ans = index.insert(12, "final_question", final_question)
@@ -701,29 +701,33 @@ def route_download():
         dataFrame['is_prob_envt_culture'][i] = dataFrame['is_prob_envt_culture'][i]['ans']
         dataFrame['is_prob_skill_gap'][i] = dataFrame['is_prob_skill_gap'][i]['ans']
         dataFrame['is_prob_value_sys'][i] = dataFrame['is_prob_value_sys'][i]['ans']
+        dataFrame['behavior_prob'][i] = dataFrame['behavior_prob'][i]['ans']
+        dataFrame['for_whom'][i] = dataFrame['for_whom'][i]['ans']
+        dataFrame['purpose'][i] = dataFrame['purpose'][i]['ans']
+
 
    
-    datatoexcel = pd.ExcelWriter('CarsData1.xlsx', engine='xlsxwriter')
-
-    # write DataFrame to excel
-    dataFrame.to_excel(datatoexcel, sheet_name='my_analysis', index=False, na_rep='NaN')
-
-    # for column in dataFrame:
-    #     column_width = max(dataFrame[column].astype(str).map(len).max(), len(column))
-    #     col_idx = dataFrame.columns.get_loc(column)
-    #     datatoexcel.sheets['my_analysis'].set_column(col_idx, col_idx, column_width)
-    col_idx = dataFrame.columns.get_loc('how_prob_sound')
-    datatoexcel.sheets['my_analysis'].set_column(col_idx, col_idx, 30)
-    # save the
-    datatoexcel.save()
-
-    print(datatoexcel)
+    # datatoexcel = pd.ExcelWriter('CarsData1.xlsx', engine='xlsxwriter')
+    #
+    # # write DataFrame to excel
+    # dataFrame.to_excel(datatoexcel, sheet_name='my_analysis', index=False, na_rep='NaN')
+    #
+    # # for column in dataFrame:
+    # #     column_width = max(dataFrame[column].astype(str).map(len).max(), len(column))
+    # #     col_idx = dataFrame.columns.get_loc(column)
+    # #     datatoexcel.sheets['my_analysis'].set_column(col_idx, col_idx, column_width)
+    # col_idx = dataFrame.columns.get_loc('how_prob_sound')
+    # datatoexcel.sheets['my_analysis'].set_column(col_idx, col_idx, 30)
+    # # save the
+    # datatoexcel.save()
+    #
+    # print(datatoexcel)
     
-    resp = make_response(pd.read_excel(datatoexcel).to_csv())
-    print(resp)
-
+    # resp = make_response(pd.read_excel(datatoexcel).to_csv())
+    # print(resp)
+    resp = make_response(dataFrame.to_csv())
     resp.headers["Content-Disposition"] = "attachment; filename=export.csv"
-    resp.headers["Content-Type"] = "text/csv"
+    resp.headers["Content-Type"] = "text/csv; charset=UTF-8"
     return resp
     
     # 
