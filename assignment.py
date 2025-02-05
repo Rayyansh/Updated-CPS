@@ -2578,7 +2578,5 @@ if __name__ == "__main__":
     global tot_list
     tot_list = []
 
-    port = int(os.environ.get('PORT', 8000))
     #serve(app, host='0.0.0.0', port=port)
-    app.run(port=port,debug=True)
-
+    app.run(host='0.0.0.0', port=80)
