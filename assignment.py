@@ -5,8 +5,7 @@ import pandas as pd
 from flask import Flask, render_template, request, session, abort, flash, redirect, url_for, jsonify, Response, \
     make_response
 import spacy
-import flask.scaffold
-flask.helpers._endpoint_from_view_func = flask.scaffold._endpoint_from_view_func
+from flask.sansio.scaffold import _endpoint_from_view_func
 from flask_restful import Api, Resource
 from waitress import serve
 import os
