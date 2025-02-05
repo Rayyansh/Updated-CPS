@@ -11,7 +11,7 @@ from flask_restful import Api, Resource
 from waitress import serve
 import os
 import urllib.parse
-os.environ['MONGODB_URI'] = "mongodb+srv://pharshil1902:hhpdhphrp@cluster0.pxxvw.mongodb.net/techqrt_chatbot?retryWrites=true&w=majority"
+os.environ['MONGODB_URI'] = "mongodb+srv://ryantechqrt:1AS9fgSPhdjEuEx8@cluster0.komdo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 import pymongo
 import uuid
 global client
