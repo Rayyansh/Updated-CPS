@@ -35,7 +35,7 @@
             {# new changes here           #}
             <div class="col-lg-2" style="margin-top: 26px;">
                 <div class="fixed-logo">
-                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:100;">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:100%;">
                 </div>
             </div>
             <div class="col-lg-9">
@@ -107,7 +107,6 @@ Please click “Help” button for additional information and examples.
         </div>
     </section>
 
-
     <!-- popup -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -130,14 +129,41 @@ Please click “Help” button for additional information and examples.
         </div>
     </div>
     <!-- popup end -->
+
     <script>
-         function mycounter(){
-    const currentLength = 250 - document.getElementById('answer').value.length;
-    const counterEle = document.getElementById('counter');
-    counterEle.innerHTML = `Characters Left : ${currentLength}`;
-    }
-    window.onload= mycounter;
+        let isSaved = false; // Flag to track if the data is saved
+
+        // Event listener for the Save button
+        document.querySelector('button[type="submit"][formaction="/second_db"]').addEventListener('click', function() {
+            isSaved = true; // Set to true when Save button is clicked
+        });
+
+        // Event listener for the Next button
+        document.querySelector('button[type="submit"][formaction="/second"]').addEventListener('click', function(event) {
+            if (!isSaved) {
+                // If not saved, prevent the form submission and show a prompt
+                event.preventDefault();
+                alert("Please save your changes before moving to the next page.");
+            }
+        });
+
+        // Optional: Check if the user tries to navigate away without saving
+        window.onbeforeunload = function() {
+            if (!isSaved) {
+                return "You have unsaved changes. Do you want to leave without saving?";
+            }
+        };
+
+        // Counter for remaining characters
+        function mycounter(){
+            const currentLength = 250 - document.getElementById('answer').value.length;
+            const counterEle = document.getElementById('counter');
+            counterEle.innerHTML = `Characters Left : ${currentLength}`;
+        }
+
+        window.onload = mycounter;
     </script>
+
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
