@@ -114,15 +114,30 @@ Please click “Help” button for additional information and examples.
 <script>
     let isSaved = false; // Flag to track if the data is saved
 
-    // Event listener for the Save button using querySelector
-    document.querySelector('#saveButton').addEventListener('click', function() {
-        isSaved = true; // Set to true when Save button is clicked
+    // Event listener for the Save button
+    document.querySelector('button[type="submit"][formaction="/list_problem_db"]').addEventListener('click', function(event) {
+        // Prevent default form submission for Save button
+        event.preventDefault();
+
+        // Save the form data by submitting the form
+        document.querySelector('form').submit(); // This triggers the form submission (which would be handled by your Flask route)
+        
+        // Set isSaved to true after Save button is clicked
+        isSaved = true;
     });
 
-    // Event listener for the Next button using querySelector
-    document.querySelector('#nextButton').addEventListener('click', function(event) {
+    // Event listener for the Back button
+    document.querySelector('button[type="submit"][formaction="/go_to_problem/{{session["user"]["problems"][session["id"]]["problem_id"] }}"]').addEventListener('click', function(event) {
+        if (!isSaved && !confirm('Please save your changes before moving away from this page.')) {
+            // Prevent the back action if user cancels
+            event.preventDefault();
+        }
+    });
+
+    // Event listener for the Next button
+    document.querySelector('button[type="submit"][formaction="/list_problem"]').addEventListener('click', function(event) {
         if (!isSaved) {
-            // If not saved, prevent the form submission and show a prompt
+            // Prevent the form submission and alert the user if not saved
             event.preventDefault();
             alert("Please save your changes before moving to the next page.");
         }
@@ -135,15 +150,16 @@ Please click “Help” button for additional information and examples.
         }
     };
 
-    // Counter for remaining characters
-    function mycounter(){
-        const currentLength = 100 - document.querySelector('#answer').value.length;
-        const counterEle = document.querySelector('#counter');
-        counterEle.innerHTML = `Characters Left : ${currentLength}`;
+    // Counter for remaining characters in the textarea
+    function mycounter() {
+        const currentLength = 100 - document.getElementById('answer').value.length;
+        const counterEle = document.getElementById('counter');
+        counterEle.innerHTML = `Characters Left: ${currentLength}`;
     }
 
     window.onload = mycounter;
 </script>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
