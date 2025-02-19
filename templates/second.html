@@ -52,7 +52,7 @@
 
 <section>
     <div class="container">
-        <form>
+        <form id="problemForm" method="POST">
             <div class="row">
                 <div class="col-lg-12">
                     <h4 class="highlight-text text-white mb-20">Initial Problem Summary Sentence</h4>
@@ -78,8 +78,8 @@ Please click “Help” button for additional information and examples.
 
                 <div class="col-lg-12 text-center">
                     <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formaction="/go_to_problem/{{session['user']['problems'][session['id']]['problem_id'] }}" formmethod="POST" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
-                    <button type="submit" id="saveButton" formmethod="POST" formaction="/list_problem_db" class="btn btn-md btn-primary">SAVE</button>
-                    <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formmethod="POST" formaction="/list_problem" class="btn btn-sm btn-primary" id="nextButton">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                    <button type="button" id="saveButton" class="btn btn-md btn-primary" onclick="saveData()">SAVE</button>
+                    <button type="submit" id="nextButton" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
                     <button style="float:left;" formaction="/return_s" formmethod="post" type="submit" class="btn btn-md btn-primary">Log Out</button>
                 </div>
             </div>
@@ -114,12 +114,13 @@ Please click “Help” button for additional information and examples.
 <script>
     let isSaved = false; // Flag to track if the data is saved
 
-    // Event listener for the Save button
-    document.getElementById('saveButton').addEventListener('click', function() {
-        isSaved = true; // Set to true when Save button is clicked
-    });
+    // Event listener for Save button
+    function saveData() {
+        isSaved = true; // Mark data as saved
+        alert('Data saved successfully.');
+    }
 
-    // Event listener for the Next button
+    // Event listener for Next button
     document.getElementById('nextButton').addEventListener('click', function(event) {
         if (!isSaved) {
             // If not saved, prevent the form submission and show a prompt
