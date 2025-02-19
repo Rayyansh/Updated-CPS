@@ -125,7 +125,7 @@
     function on_submit_b(){
         //alert("done");
         if({{save}} == 0){
-            let ys = confirm("Do you want to save your changes before moving away from this page?");
+            let ys = confirm("Please save your changes before moving away from this page.");
             if(ys){
                 document.getElementById('frm').action = "/list_problems_db_bs";
                 document.getElementById('frm').method = "POST";
@@ -186,7 +186,7 @@
     function on_submit_f(){
         //alert("done");
         if({{save}} == 0){
-            let ys = confirm("Do you want to save your changes before moving away from this page?");
+            let ys = confirm("Please save your changes before moving away from this page.");
             if(ys){
                 document.getElementById('frm').action = "/list_problems_db_ns";
                 document.getElementById('frm').method = "POST";

@@ -83,9 +83,9 @@ Please click “Help” button for additional information and examples.
 
                 </script>
                 <div class="col-lg-12 text-center">
-                    <button type="submit" onsubmit="return confirm('Do you want to save your changes before moving away from this page?')" formaction="/go_to_problem/{{session['user']['problems'][session['id']]['problem_id'] }}" formmethod="POST" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+                    <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formaction="/go_to_problem/{{session['user']['problems'][session['id']]['problem_id'] }}" formmethod="POST" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
                 <button type="submit"  formmethod="POST" formaction="/list_problem_db" class="btn btn-md btn-primary">SAVE</button>
-                    <button type="submit" onsubmit="return confirm('Do you want to save your changes before moving away from this page?')" formmethod="POST" formaction="/list_problem" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                    <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formmethod="POST" formaction="/list_problem" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
                 <button style="float:left;"formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
 
                 </div>
