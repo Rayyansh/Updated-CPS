@@ -19,6 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10">
+
                 </div>
                 <div class="col-lg-2">
                     <h5 class="text-white text-center">Page {{session['page_no']}}</h5>
@@ -29,34 +30,38 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-lg-2" style="margin-top: 26px;">
-            <div class="fixed-logo">
-                <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+        {# new changes here           #}
+            <div class="col-lg-2" style="margin-top: 26px;">
+                <div class="fixed-logo">
+                    <img src="{{url_for('static',filename='images/Nivriti new logo.jpeg')}}" alt="" style="max-height:75px;width:130;">
+                </div>
             </div>
-        </div>
-        <div class="col-lg-9">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url_for('signin')}}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Problem Summary Sentence</li>
-                </ol>
-            </nav>
-        </div>
-        <div class="col-lg-1" style="margin-top: 33px;">
-            <a href="" data-toggle="modal" data-target="#exampleModal">
-                <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
-            </a>
-        </div>
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for('signin')}}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Problem Summary Sentence</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-1" style="margin-top: 33px;">
+                <a href="" data-toggle="modal" data-target="#exampleModal">
+                    <button type="submit" formaction="/user" formmethod="POST" class="btn btn-bg btn-primary"> Help </button>
+                </a>
+            </div>
+            {# new changes here           #}
     </div>
 </div>
-
+<!-- header -->
+<!-- section -->
 <section>
     <div class="container">
         <form>
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="highlight-text text-white mb-20">Initial Problem Summary Sentence</h4>
+                    <h4 class="highlight-text text-white mb-20  ">Initial Problem Summary Sentence  </h4>
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -70,29 +75,33 @@
 Summary sentence is limited to 100 characters (including blank spaces).
 
 Please click “Help” button for additional information and examples.
-                        </textarea>
-                        <textarea onkeyup="mycounter()" class="form-control" rows="4" id="answer" maxlength="100" placeholder="Enter answer here(Limit 100 character)" name="second">{{session['user']['problems'][session['id']]['initial_prob_st']}}</textarea>
+                          </textarea>
+                        <textarea onkeyup="mycounter()" class="form-control" rows="4" id="answer"  maxlength = "100" placeholder="Enter answer here(Limit 100 character)" name="second">{{session['user']['problems'][session['id']]['initial_prob_st']}}  </textarea>
                         <span id="counter"></span>
                     </div>
                 </div>
 
+                </script>
                 <div class="col-lg-12 text-center">
                     <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formaction="/go_to_problem/{{session['user']['problems'][session['id']]['problem_id'] }}" formmethod="POST" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
-                    <button type="submit" id="saveButton" formmethod="POST" formaction="/list_problem_db" class="btn btn-md btn-primary">SAVE</button>
-                    <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formmethod="POST" formaction="/list_problem" class="btn btn-sm btn-primary" id="nextButton">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
-                    <button style="float:left;" formaction="/return_s" formmethod="post" type="submit" class="btn btn-md btn-primary">Log Out</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
+                <button type="submit"  formmethod="POST" formaction="/list_problem_db" class="btn btn-md btn-primary">SAVE</button>
+                    <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formmethod="POST" formaction="/list_problem" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                <button style="float:left;"formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
 
-<!-- popup -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </div>
+                </div>
+                </div>
+                </form>
+                </section>
+
+
+                    <!-- popup -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+
+                    <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <p> Additional Information & Examples:
@@ -100,70 +109,63 @@ Please click “Help” button for additional information and examples.
                 Initial Challenge Summary Sentence Examples: <br>
                 1) Our organization needs to reduce the high rate of employee attrition. <br>
                 2) We are unable to get repeat orders and new customers. <br>
+
+
                 </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- popup end -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <!-- popup end -->
 
-<!-- Scripts -->
-<script>
-    let isSaved = false; // Flag to track if the data is saved
-
-    // Event listener for the Save button
-    document.querySelector('button[type="submit"][formaction="/list_problem_db"]').addEventListener('click', function(event) {
-        // Prevent default form submission for Save button
-        event.preventDefault();
-
-        // Save the form data by submitting the form
-        document.querySelector('form').submit(); // This triggers the form submission (which would be handled by your Flask route)
-        
-        // Set isSaved to true after Save button is clicked
-        isSaved = true;
-    });
-
-    // Event listener for the Back button
-    document.querySelector('button[type="submit"][formaction="/go_to_problem/{{session["user"]["problems"][session["id"]]["problem_id"] }}"]').addEventListener('click', function(event) {
-        if (!isSaved && !confirm('Please save your changes before moving away from this page.')) {
-            // Prevent the back action if user cancels
-            event.preventDefault();
-        }
-    });
-
-    // Event listener for the Next button
-    document.querySelector('button[type="submit"][formaction="/list_problem"]').addEventListener('click', function(event) {
-        if (!isSaved) {
-            // Prevent the form submission and alert the user if not saved
-            event.preventDefault();
-            alert("Please save your changes before moving to the next page.");
-        }
-    });
-
-    // Optional: Check if the user tries to navigate away without saving
-    window.onbeforeunload = function() {
-        if (!isSaved) {
-            return "You have unsaved changes. Do you want to leave without saving?";
-        }
-    };
-
-    // Counter for remaining characters in the textarea
-    function mycounter() {
-        const currentLength = 100 - document.getElementById('answer').value.length;
-        const counterEle = document.getElementById('counter');
-        counterEle.innerHTML = `Characters Left: ${currentLength}`;
-    }
-
-    window.onload = mycounter;
-</script>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <!-- Scripts -->
+                    <script>
+                        let saved = false;  // This variable tracks if the form is saved.
+                    
+                        // This function will be called when the form is saved.
+                        function markAsSaved() {
+                            saved = true;  // Set saved to true when the form is saved.
+                        }
+                    
+                        // This function will handle the Next button click.
+                        function handleNextClick(event) {
+                            if (!saved) {  // If the form has not been saved yet.
+                                event.preventDefault();  // Prevent the default form submission.
+                                const confirmation = confirm("Please save your changes before moving away from this page.");
+                                if (confirmation) {
+                                    document.querySelector('form').submit();  // Submit the form if the user confirms.
+                                }
+                            }
+                        }
+                    
+                        // Attach event listeners to the "SAVE" and "NEXT" buttons
+                        window.onload = function () {
+                            // Add event listener for the save button
+                            const saveButton = document.querySelector('button[type="submit"][formaction="/list_problem_db"]');
+                            saveButton.addEventListener('click', function () {
+                                markAsSaved();  // Mark the form as saved when the save button is clicked.
+                            });
+                    
+                            // Add event listener for the next button
+                            const nextButton = document.querySelector('button[type="submit"][formaction="/list_problem"]');
+                            nextButton.addEventListener('click', handleNextClick);  // Handle click for the next button
+                        };
+                    
+                        // Update character counter as the user types
+                        function mycounter() {
+                            const currentLength = 100 - document.getElementById('answer').value.length;
+                            const counterEle = document.getElementById('counter');
+                            counterEle.innerHTML = `Characters Left : ${currentLength}`;
+                        }
+                    
+                        window.onload = mycounter;
+                    </script>
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
