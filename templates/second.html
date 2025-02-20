@@ -83,9 +83,9 @@ Please click “Help” button for additional information and examples.
 
                 </script>
                 <div class="col-lg-12 text-center">
-                    <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formaction="/go_to_problem/{{session['user']['problems'][session['id']]['problem_id'] }}" formmethod="POST" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
+                    <button type="submit" onsubmit="return confirm('Do you want to save your changes before moving away from this page?')" formaction="/go_to_problem/{{session['user']['problems'][session['id']]['problem_id'] }}" formmethod="POST" class="btn btn-sm btn-primary"> <i class="fa fa-angle-double-left" aria-hidden="true"></i> BACK</button>
                 <button type="submit"  formmethod="POST" formaction="/list_problem_db" class="btn btn-md btn-primary">SAVE</button>
-                    <button type="submit" onsubmit="return confirm('Please save your changes before moving away from this page.')" formmethod="POST" formaction="/list_problem" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
+                    <button type="submit" onsubmit="return confirm('Do you want to save your changes before moving away from this page?')" formmethod="POST" formaction="/list_problem" class="btn btn-sm btn-primary">NEXT <i class="fa fa-angle-double-right" aria-hidden="true"></i> </button>
                 <button style="float:left;"formaction="/return_s" formmethod="post"  type="submit" class="btn btn-md btn-primary">Log Out</button>
 
                 </div>
@@ -123,46 +123,13 @@ Please click “Help” button for additional information and examples.
 
                     <!-- Scripts -->
                     <script>
-                        let saved = false;  // This variable tracks if the form is saved.
-                    
-                        // This function will be called when the form is saved.
-                        function markAsSaved() {
-                            saved = true;  // Set saved to true when the form is saved.
-                        }
-                    
-                        // This function will handle the Next button click.
-                        function handleNextClick(event) {
-                            if (!saved) {  // If the form has not been saved yet.
-                                event.preventDefault();  // Prevent the default form submission.
-                                const confirmation = confirm("Please save your changes before moving away from this page.");
-                                if (confirmation) {
-                                    document.querySelector('form').submit();  // Submit the form if the user confirms.
-                                }
-                            }
-                        }
-                    
-                        // Attach event listeners to the "SAVE" and "NEXT" buttons
-                        window.onload = function () {
-                            // Add event listener for the save button
-                            const saveButton = document.querySelector('button[type="submit"][formaction="/list_problem_db"]');
-                            saveButton.addEventListener('click', function () {
-                                markAsSaved();  // Mark the form as saved when the save button is clicked.
-                            });
-                    
-                            // Add event listener for the next button
-                            const nextButton = document.querySelector('button[type="submit"][formaction="/list_problem"]');
-                            nextButton.addEventListener('click', handleNextClick);  // Handle click for the next button
-                        };
-                    
-                        // Update character counter as the user types
-                        function mycounter() {
-                            const currentLength = 100 - document.getElementById('answer').value.length;
-                            const counterEle = document.getElementById('counter');
-                            counterEle.innerHTML = `Characters Left : ${currentLength}`;
-                        }
-                    
-                        window.onload = mycounter;
-                    </script>
+                    function mycounter(){
+                        const currentLength = 100 - document.getElementById('answer').value.length;
+                        const counterEle = document.getElementById('counter');
+                        counterEle.innerHTML = `Characters Left : ${currentLength}`;
+                    }
+                window.onload= mycounter;
+                </script>
                 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
